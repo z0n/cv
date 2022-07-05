@@ -1,0 +1,42 @@
+import React, { ReactElement } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import { SkillsSectionQuery } from '../../../graphql-types'
+import { Card } from '../card/card'
+import { CvSection } from '../cv-section/cv-section'
+import { SkillBar } from './skill-bar'
+import { skillContainer, skillsContainer, skillsContainerItems } from './skills.module.css'
+
+export const Skills = (): ReactElement => {
+    const queryData: SkillsSectionQuery = useStaticQuery(graphql`
+        query SkillsSection {
+            allGraphCmsCv {
+                nodes {
+                    name
+                    skills {
+                        id
+                        name
+                        level
+                    }
+                }
+            }
+        }
+    `)
+
+    const cvName = process.env.GATSBY_CV_NAME as string
+    const cvData = queryData.allGraphCmsCv.nodes.find(node => node.name === cvName)
+
+    const skills = cvData?.skills || []
+
+    return (
+        <CvSection title='Skills' sectionClassName={skillsContainer}>
+            <Card className={skillsContainerItems}>
+                {skills.map(skill => (
+                    <Card key={skill.id} className={skillContainer}>
+                        <SkillBar level={skill.level} />
+                        {skill.name}
+                    </Card>
+                ))}
+            </Card>
+        </CvSection>
+    )
+}

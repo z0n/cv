@@ -1,0 +1,87 @@
+fragment CV on CV {
+  stage
+  locale
+  publishedAt(variation: COMBINED)
+  updatedAt(variation: COMBINED)
+  createdAt(variation: COMBINED)
+  remoteId: id
+  name
+  aboutMeSection {
+    ... on AboutMeSection {
+      stage
+      locale
+      id
+      description
+      location
+      phone
+      email
+      linkedin
+      github
+      picture {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  experiences {
+    ... on Experience {
+      stage
+      locale
+      id
+      position
+      company
+      startDate
+      endDate
+      description
+      technologies
+    }
+  }
+  skills {
+    ... on Skill {
+      stage
+      id
+      name
+      level
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  backgroundImage {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+      stage
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}

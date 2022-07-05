@@ -1,0 +1,15 @@
+.bar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-size: 2rem;
+    padding: 0 1rem;
+    height: 4rem;
+}
+
+.bar svg {
+    display: flex;
+    align-items: center;
+}

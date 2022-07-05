@@ -1,0 +1,25 @@
+.experienceList {
+    display: flex;
+    flex: 4;
+    flex-direction: column;
+    align-items: left;
+}
+
+@media (min-width: 768px) {
+    .experienceList {
+        min-width: 26rem;
+    }
+}
+
+.experienceListItems {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.subtitle {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
