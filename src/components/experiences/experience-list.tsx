@@ -25,6 +25,12 @@ export const ExperienceList = (): ReactElement => {
         }
     `)
 
+    // Diese Zeile würde ich vor die Component ziehen. Das ist ein statischer
+    // Wert, der nicht bei jedem Rerender neu gelesen werden muss
+    //
+    // Meiner Meinung noch besser für diese Stelle:
+    // den cvName als Prop übergeben. Ich find's einfacher, wenn es möglichst
+    // wenige Stellen gibt, an denen auf process.env zugegriffen wird.
     const cvName = process.env.GATSBY_CV_NAME as string
     const cvData = queryData.allGraphCmsCv.nodes.find(node => node.name === cvName)
 

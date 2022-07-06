@@ -4,6 +4,11 @@ import BackgroundImage, { IFluidObject } from 'gatsby-background-image'
 import { BackgroundImageQuery } from '../../../graphql-types'
 import { background } from './background.module.css'
 
+// Beispiel für FC mit props:
+// Benötigt `import React, { FC, PropsWithChildren, ReactNode } from 'react'`
+// `export const Background: FC<{ children: ReactNode }> = ({ children }) => {`
+// oder für den Fall, dass man nur die `children` Prop braucht:
+// `export const Background: FC<PropsWithChildren> = ({ children }) => {`
 export const Background = ({ children }: { children: React.ReactNode }): ReactElement => {
     const queryData: BackgroundImageQuery = useStaticQuery(graphql`
         query BackgroundImage {

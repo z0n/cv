@@ -1,3 +1,9 @@
+/*
+Das schöne an CSS modules ist, dass du keine prefixes brauchst ;)
+Also einfach `.container` statt `.aboutMeContainer`, etc. Das ist dann trotzdem
+eindeutig und du kannst den class name `.container` in einer anderen nochmal
+verwenden
+*/
 .aboutMeContainer {
     display: flex;
     flex: 1;

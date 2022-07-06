@@ -1,5 +1,15 @@
+/*
+Bin mir nicht 100% sicher, ob das in Gatsby geht, aber ich glaube, du könntest
+das File besser direkt in der index.tsx importieren:
+`import '../css/typography.css'
+*/
 @import '../css/typography.css';
 
+/*
+Wenn es funktioniert, CSS files direkt in der .tsx zu importieren, dann wäre
+es sauberer, die globalen styles (body, a) in eine `index.css` zu packen und
+nur die module styles (.content) in der `...module.css` zu behalten.
+*/
 body {
     margin: 0;
 }
