@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { ExperiencesSectionQuery } from '../../../graphql-types'
 import { CvSection } from '../cv-section/cv-section'
 import { Experience } from './experience'
 import * as styles from './experiences.module.css'
 
-export const ExperienceList = (): ReactElement => {
+export const ExperienceList: FC = () => {
     const queryData: ExperiencesSectionQuery = useStaticQuery(graphql`
         query ExperiencesSection {
             allGraphCmsCv {

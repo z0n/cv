@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
@@ -13,7 +13,7 @@ import { ContactItemWithLink } from '../contact-items/contact-list-item-with-lin
 import { ContactIconWithLink } from '../contact-items/contact-icon-with-link'
 import { CvSection } from '../cv-section/cv-section'
 
-export const AboutMe = (): ReactElement => {
+export const AboutMe: FC = () => {
     const queryData: AboutMeSectionQuery = useStaticQuery(graphql`
         query AboutMeSection {
             allGraphCmsCv {

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { SkillsSectionQuery } from '../../../graphql-types'
 import { Card } from '../card/card'
@@ -6,7 +6,7 @@ import { CvSection } from '../cv-section/cv-section'
 import { SkillBar } from './skill-bar'
 import * as styles from './skills.module.css'
 
-export const Skills = (): ReactElement => {
+export const Skills: FC = () => {
     const queryData: SkillsSectionQuery = useStaticQuery(graphql`
         query SkillsSection {
             allGraphCmsCv {

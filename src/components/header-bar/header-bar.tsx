@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { HeaderLogo } from './header-logo'
 import * as styles from './header.module.css'
 
-export const HeaderBar = (): ReactElement => {
+export const HeaderBar: FC = () => {
     return (
         <div className={styles.bar}>
             <HeaderLogo />
