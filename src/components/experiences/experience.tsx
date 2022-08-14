@@ -13,7 +13,11 @@ export interface Experience {
     technologies: string[]
 }
 
-export const Experience: FC<{ experience: Experience }> = ({ experience }) => {
+interface ExperienceProps {
+    experience: Experience
+}
+
+export const Experience: FC<ExperienceProps> = ({ experience }) => {
     const endDate = experience.endDate || 'now'
 
     return (

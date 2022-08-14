@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
 import { Line } from '../line/line'
 
-export const CvSection: FC<{
+interface CvSectionProps {
     title: string
     sectionClassName: string
     children: React.ReactNode
-}> = ({ title, sectionClassName, children }) => {
+}
+
+export const CvSection: FC<CvSectionProps> = ({ title, sectionClassName, children }) => {
     return (
         <div className={sectionClassName}>
             <Line text={title} />

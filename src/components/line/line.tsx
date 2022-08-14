@@ -1,7 +1,11 @@
 import React, { FC } from 'react'
 import { line, lineLeft, lineRight, lineText } from './line.module.css'
 
-export const Line: FC<{ text: string }> = ({ text }) => {
+interface LineProps {
+    text: string
+}
+
+export const Line: FC<LineProps> = ({ text }) => {
     return (
         <div className={line}>
             <span className={lineLeft} />
