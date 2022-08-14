@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 
 import { contactItemRow } from './contact-items.module.css'
 
-export const ContactItemRow = ({ children }: { children: React.ReactNode }): ReactElement => {
+export const ContactItemRow: FC<PropsWithChildren> = ({ children }) => {
     return <div className={contactItemRow}>{children}</div>
 }

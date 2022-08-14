@@ -1,15 +1,11 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { Line } from '../line/line'
 
-export const CvSection = ({
-    title,
-    sectionClassName,
-    children,
-}: {
+export const CvSection: FC<{
     title: string
     sectionClassName: string
     children: React.ReactNode
-}): ReactElement => {
+}> = ({ title, sectionClassName, children }) => {
     return (
         <div className={sectionClassName}>
             <Line text={title} />
