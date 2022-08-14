@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Card } from '../card/card'
 import { subtitle } from './experiences.module.css'
@@ -13,7 +13,11 @@ export interface Experience {
     technologies: string[]
 }
 
-export const Experience = ({ experience }: { experience: Experience }): ReactElement => {
+interface ExperienceProps {
+    experience: Experience
+}
+
+export const Experience: FC<ExperienceProps> = ({ experience }) => {
     const endDate = experience.endDate || 'now'
 
     return (

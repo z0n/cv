@@ -1,6 +1,10 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 
-export const HeaderLogo = ({ fill = '#ffffff' }: { fill: string }): ReactElement => {
+interface HeaderLogoProps {
+    fill: string
+}
+
+export const HeaderLogo: FC<HeaderLogoProps> = ({ fill = '#ffffff' }) => {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'

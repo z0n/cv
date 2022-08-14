@@ -1,9 +1,14 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { IconType } from 'react-icons'
 import { ContactIcon } from './contact-icon'
 import { contactItem } from './contact-items.module.css'
 
-export const ContactListItem = ({ icon, text }: { icon: IconType; text: string }): ReactElement => {
+interface ContactListItemProps {
+    icon: IconType
+    text: string
+}
+
+export const ContactListItem: FC<ContactListItemProps> = ({ icon, text }) => {
     return (
         <div className={contactItem}>
             <ContactIcon icon={icon} iconSize={'1.5rem'} />
