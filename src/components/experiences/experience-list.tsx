@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { ExperiencesSectionQuery } from '../../../graphql-types'
 import { CvSection } from '../cv-section/cv-section'
 import { Experience } from './experience'
-import { experienceList, experienceListItems } from './experiences.module.css'
+import * as styles from './experiences.module.css'
 
 export const ExperienceList: FC = () => {
     const queryData: ExperiencesSectionQuery = useStaticQuery(graphql`
@@ -38,8 +38,8 @@ export const ExperienceList: FC = () => {
     }
 
     return (
-        <CvSection title='Experiences' sectionClassName={experienceList}>
-            <div className={experienceListItems}>
+        <CvSection title='Experiences' sectionClassName={styles.experienceList}>
+            <div className={styles.experienceListItems}>
                 {experiences.map(experience => (
                     <Experience key={experience.id} experience={experience} />
                 ))}

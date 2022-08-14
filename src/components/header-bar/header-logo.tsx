@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 interface HeaderLogoProps {
-    fill: string
+    fill?: string
 }
 
 export const HeaderLogo: FC<HeaderLogoProps> = ({ fill = '#ffffff' }) => {

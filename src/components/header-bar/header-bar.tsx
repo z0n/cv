@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 import { HeaderLogo } from './header-logo'
-import { bar } from './header.module.css'
+import * as styles from './header.module.css'
 
 export const HeaderBar: FC = () => {
     return (
-        <div className={bar}>
-            <HeaderLogo fill={'#ffffff'} />
+        <div className={styles.bar}>
+            <HeaderLogo />
         </div>
     )
 }

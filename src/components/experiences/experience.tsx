@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Card } from '../card/card'
-import { subtitle } from './experiences.module.css'
+import * as styles from './experiences.module.css'
 
 export interface Experience {
     id: string
@@ -23,7 +23,7 @@ export const Experience: FC<ExperienceProps> = ({ experience }) => {
     return (
         <Card>
             <h3>{experience.position}</h3>
-            <div className={subtitle}>
+            <div className={styles.subtitle}>
                 <span>{experience.company}</span>
                 <span>
                     {experience.startDate} - {endDate}

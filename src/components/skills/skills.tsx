@@ -4,7 +4,7 @@ import { SkillsSectionQuery } from '../../../graphql-types'
 import { Card } from '../card/card'
 import { CvSection } from '../cv-section/cv-section'
 import { SkillBar } from './skill-bar'
-import { skillContainer, skillsContainer, skillsContainerItems } from './skills.module.css'
+import * as styles from './skills.module.css'
 
 export const Skills: FC = () => {
     const queryData: SkillsSectionQuery = useStaticQuery(graphql`
@@ -28,10 +28,10 @@ export const Skills: FC = () => {
     const skills = cvData?.skills || []
 
     return (
-        <CvSection title='Skills' sectionClassName={skillsContainer}>
-            <Card className={skillsContainerItems}>
+        <CvSection title='Skills' sectionClassName={styles.skillsContainer}>
+            <Card className={styles.skillsContainerItems}>
                 {skills.map(skill => (
-                    <Card key={skill.id} className={skillContainer}>
+                    <Card key={skill.id} className={styles.skillContainer}>
                         <SkillBar level={skill.level} />
                         {skill.name}
                     </Card>

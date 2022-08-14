@@ -3,19 +3,12 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
+import classNames from 'classnames'
 import { AboutMeSectionQuery } from '../../../graphql-types'
 import { Card } from '../card/card'
 import { ContactListItem } from '../contact-items/contact-list-item'
 import { ContactItemRow } from '../contact-items/contact-item-row'
-import {
-    aboutMeCard,
-    aboutMeContainer,
-    aboutMeItem,
-    aboutMeCategory,
-    avatar,
-    contactInformation,
-    name,
-} from './about-me.module.css'
+import * as styles from './about-me.module.css'
 import { ContactItemWithLink } from '../contact-items/contact-list-item-with-link'
 import { ContactIconWithLink } from '../contact-items/contact-icon-with-link'
 import { CvSection } from '../cv-section/cv-section'
@@ -49,14 +42,14 @@ export const AboutMe: FC = () => {
     const { description, location, phone, email, linkedin, github } = cvData?.aboutMeSection || {}
 
     return (
-        <CvSection title='About me' sectionClassName={aboutMeContainer}>
-            <Card className={aboutMeCard}>
-                <div className={aboutMeCategory}>
-                    {aboutMePicture && <GatsbyImage className={avatar} image={aboutMePicture} alt={cvName} />}
-                    <h1 className={`${aboutMeItem} ${name}`}>{cvName}</h1>
-                    {description && <h2 className={aboutMeItem}>{description}</h2>}
+        <CvSection title='About me' sectionClassName={styles.container}>
+            <Card className={styles.card}>
+                <div className={styles.category}>
+                    {aboutMePicture && <GatsbyImage className={styles.avatar} image={aboutMePicture} alt={cvName} />}
+                    <h1 className={classNames(styles.item, styles.name)}>{cvName}</h1>
+                    {description && <h2 className={styles.item}>{description}</h2>}
                 </div>
-                <div className={`${aboutMeCategory} ${contactInformation}`}>
+                <div className={classNames(styles.category, styles.contactInformation)}>
                     <div>
                         {location && <ContactListItem icon={MdLocationOn} text={location} />}
                         {phone && <ContactItemWithLink icon={MdPhone} href={`tel:${phone}`} text={phone} />}

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { skillBarContent } from './skills.module.css'
+import * as styles from './skills.module.css'
 
 interface SkillBarProps {
     level: number
@@ -8,5 +8,5 @@ interface SkillBarProps {
 export const SkillBar: FC<SkillBarProps> = ({ level }) => {
     const skillBarStyle: React.CSSProperties = { width: `${level * 20}%` }
 
-    return <span className={skillBarContent} style={skillBarStyle} />
+    return <span className={styles.skillBarContent} style={skillBarStyle} />
 }

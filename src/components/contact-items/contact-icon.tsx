@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { IconContext, IconType } from 'react-icons'
-import { contactItemIcon } from './contact-items.module.css'
+import * as styles from './contact-items.module.css'
 
 interface ContactIconProps {
     icon: IconType
@@ -9,7 +9,7 @@ interface ContactIconProps {
 
 export const ContactIcon: FC<ContactIconProps> = ({ icon, iconSize }) => {
     return (
-        <span className={contactItemIcon}>
+        <span className={styles.contactItemIcon}>
             <IconContext.Provider value={{ size: iconSize }}>{React.createElement(icon)}</IconContext.Provider>
         </span>
     )
