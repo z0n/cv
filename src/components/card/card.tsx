@@ -1,8 +1,7 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import { card } from './card.module.css'
 
-interface CardProps {
-    children: ReactNode
+interface CardProps extends PropsWithChildren {
     className?: string
 }
 
