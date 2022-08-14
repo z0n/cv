@@ -3,6 +3,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
+import classNames from 'classnames'
 import { AboutMeSectionQuery } from '../../../graphql-types'
 import { Card } from '../card/card'
 import { ContactListItem } from '../contact-items/contact-list-item'
@@ -45,10 +46,10 @@ export const AboutMe = (): ReactElement => {
             <Card className={styles.card}>
                 <div className={styles.category}>
                     {aboutMePicture && <GatsbyImage className={styles.avatar} image={aboutMePicture} alt={cvName} />}
-                    <h1 className={`${styles.item} ${styles.name}`}>{cvName}</h1>
+                    <h1 className={classNames(styles.item, styles.name)}>{cvName}</h1>
                     {description && <h2 className={styles.item}>{description}</h2>}
                 </div>
-                <div className={`${styles.category} ${styles.contactInformation}`}>
+                <div className={classNames(styles.category, styles.contactInformation)}>
                     <div>
                         {location && <ContactListItem icon={MdLocationOn} text={location} />}
                         {phone && <ContactItemWithLink icon={MdPhone} href={`tel:${phone}`} text={phone} />}
