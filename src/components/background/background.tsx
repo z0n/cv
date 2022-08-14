@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import BackgroundImage, { IFluidObject } from 'gatsby-background-image'
 import { BackgroundImageQuery } from '../../../graphql-types'
-import { background } from './background.module.css'
+import * as styles from './background.module.css'
 
 export const Background = ({ children }: { children: React.ReactNode }): ReactElement => {
     const queryData: BackgroundImageQuery = useStaticQuery(graphql`
@@ -30,7 +30,7 @@ export const Background = ({ children }: { children: React.ReactNode }): ReactEl
     const backgroundImage = cvData?.backgroundImage?.localFile?.childImageSharp?.fluid as IFluidObject
 
     return (
-        <BackgroundImage className={background} fluid={backgroundImage} backgroundColor={'#fffbfe'}>
+        <BackgroundImage className={styles.background} fluid={backgroundImage} backgroundColor={'#fffbfe'}>
             {children}
         </BackgroundImage>
     )

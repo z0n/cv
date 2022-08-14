@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
-import { line, lineLeft, lineRight, lineText } from './line.module.css'
+import * as styles from './line.module.css'
 
 export const Line = ({ text }: { text: string }): ReactElement => {
     return (
-        <div className={line}>
-            <span className={lineLeft} />
-            <span className={lineText}>{text}</span>
-            <span className={lineRight} />
+        <div className={styles.line}>
+            <span className={styles.lineLeft} />
+            <span className={styles.lineText}>{text}</span>
+            <span className={styles.lineRight} />
         </div>
     )
 }

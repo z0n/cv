@@ -1,11 +1,11 @@
-.aboutMeContainer {
+.container {
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: left;
 }
 
-.aboutMeCard {
+.card {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
@@ -13,7 +13,7 @@
 }
 
 @media (max-width: 768px) {
-    .aboutMeCard {
+    .card {
         flex-direction: row;
     }
 }
@@ -27,7 +27,7 @@
     border: #001e2e solid 3px;
 }
 
-.aboutMeItem {
+.item {
     margin: 0 1rem;
     text-align: center;
 }
@@ -36,7 +36,7 @@
     white-space: nowrap;
 }
 
-.aboutMeCategory {
+.category {
     display: flex;
     flex-direction: column;
     max-width: fit-content;
