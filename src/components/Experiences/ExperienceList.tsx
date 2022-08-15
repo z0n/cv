@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { FC } from 'react'
 import { ExperiencesSectionQuery } from '../../../graphql-types'
-import { CvSection } from '../cv-section/cv-section'
-import { Experience } from './experience'
-import * as styles from './experiences.module.css'
+import { CvSection } from '../CvSection/CvSection'
+import { Experience, WorkExperience } from './Experience'
+import * as styles from './Experiences.module.css'
 
 export const ExperienceList: FC = () => {
     const queryData: ExperiencesSectionQuery = useStaticQuery(graphql`
@@ -28,7 +28,7 @@ export const ExperienceList: FC = () => {
     const cvName = process.env.GATSBY_CV_NAME as string
     const cvData = queryData.allGraphCmsCv.nodes.find(node => node.name === cvName)
 
-    let experiences: Experience[] = []
+    let experiences: WorkExperience[] = []
     if (cvData?.experiences) {
         experiences = cvData?.experiences.sort((a, b) => {
             const aDate = new Date(a.startDate)

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import * as styles from './line.module.css'
+import * as styles from './Line.module.css'
 
 interface LineProps {
     text: string

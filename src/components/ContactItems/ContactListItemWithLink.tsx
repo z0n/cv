@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IconType } from 'react-icons'
-import { ContactIcon } from './contact-icon'
-import * as styles from './contact-items.module.css'
+import { ContactIcon } from './ContactIcon'
+import * as styles from './ContactItems.module.css'
 
 interface ContactListItemProps {
     icon: IconType
@@ -9,7 +9,7 @@ interface ContactListItemProps {
     text: string
 }
 
-export const ContactItemWithLink: FC<ContactListItemProps> = ({ icon, href, text }) => {
+export const ContactListItemWithLink: FC<ContactListItemProps> = ({ icon, href, text }) => {
     return (
         <div className={styles.contactItem}>
             <ContactIcon icon={icon} iconSize={'1.5rem'} />

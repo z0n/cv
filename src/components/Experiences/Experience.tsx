@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Card } from '../card/card'
-import * as styles from './experiences.module.css'
+import { Card } from '../Card/Card'
+import * as styles from './Experiences.module.css'
 
-export interface Experience {
+export interface WorkExperience {
     id: string
     company: string
     position: string
@@ -14,7 +14,7 @@ export interface Experience {
 }
 
 interface ExperienceProps {
-    experience: Experience
+    experience: WorkExperience
 }
 
 export const Experience: FC<ExperienceProps> = ({ experience }) => {

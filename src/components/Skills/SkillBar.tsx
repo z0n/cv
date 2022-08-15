@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import * as styles from './skills.module.css'
+import * as styles from './Skills.module.css'
 
 interface SkillBarProps {
     level: number

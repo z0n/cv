@@ -5,13 +5,13 @@ import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
 import classNames from 'classnames'
 import { AboutMeSectionQuery } from '../../../graphql-types'
-import { Card } from '../card/card'
-import { ContactListItem } from '../contact-items/contact-list-item'
-import { ContactItemRow } from '../contact-items/contact-item-row'
-import * as styles from './about-me.module.css'
-import { ContactItemWithLink } from '../contact-items/contact-list-item-with-link'
-import { ContactIconWithLink } from '../contact-items/contact-icon-with-link'
-import { CvSection } from '../cv-section/cv-section'
+import { Card } from '../Card/Card'
+import { ContactListItem } from '../ContactItems/ContactListItem'
+import { ContactItemRow } from '../ContactItems/ContactItemRow'
+import * as styles from './AboutMe.module.css'
+import { ContactListItemWithLink } from '../ContactItems/ContactListItemWithLink'
+import { ContactIconWithLink } from '../ContactItems/ContactIconWithLink'
+import { CvSection } from '../CvSection/CvSection'
 
 export const AboutMe: FC = () => {
     const queryData: AboutMeSectionQuery = useStaticQuery(graphql`
@@ -52,8 +52,8 @@ export const AboutMe: FC = () => {
                 <div className={classNames(styles.category, styles.contactInformation)}>
                     <div>
                         {location && <ContactListItem icon={MdLocationOn} text={location} />}
-                        {phone && <ContactItemWithLink icon={MdPhone} href={`tel:${phone}`} text={phone} />}
-                        {email && <ContactItemWithLink icon={MdEmail} href={`mailto:${email}`} text={email} />}
+                        {phone && <ContactListItemWithLink icon={MdPhone} href={`tel:${phone}`} text={phone} />}
+                        {email && <ContactListItemWithLink icon={MdEmail} href={`mailto:${email}`} text={email} />}
                     </div>
                     <ContactItemRow>
                         {linkedin && (
