@@ -157,6 +157,7 @@ export type Internal = {
   mediaType?: Maybe<Scalars['String']>;
   owner: Scalars['String'];
   type: Scalars['String'];
+  contentFilePath?: Maybe<Scalars['String']>;
 };
 
 export type GraphCmsImagePlaceholder =
@@ -266,7 +267,7 @@ export type Site = Node & {
   siteMetadata?: Maybe<SiteSiteMetadata>;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
-  graphqlTypegen?: Maybe<Scalars['Boolean']>;
+  graphqlTypegen?: Maybe<SiteGraphqlTypegen>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   jsxRuntime?: Maybe<Scalars['String']>;
@@ -283,6 +284,11 @@ export type SiteBuildTimeArgs = {
   fromNow?: InputMaybe<Scalars['Boolean']>;
   difference?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
+};
+
+export type SiteGraphqlTypegen = {
+  typesOutputPath?: Maybe<Scalars['String']>;
+  generateOnBuild?: Maybe<Scalars['Boolean']>;
 };
 
 export type SiteSiteMetadata = {
@@ -945,7 +951,7 @@ export type QuerySiteArgs = {
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
   port?: InputMaybe<IntQueryOperatorInput>;
   host?: InputMaybe<StringQueryOperatorInput>;
-  graphqlTypegen?: InputMaybe<BooleanQueryOperatorInput>;
+  graphqlTypegen?: InputMaybe<SiteGraphqlTypegenFilterInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -1358,6 +1364,7 @@ export type InternalFilterInput = {
   mediaType?: InputMaybe<StringQueryOperatorInput>;
   owner?: InputMaybe<StringQueryOperatorInput>;
   type?: InputMaybe<StringQueryOperatorInput>;
+  contentFilePath?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type BooleanQueryOperatorInput = {
@@ -1505,6 +1512,7 @@ export type FileFieldsEnum =
   | 'childrenImageSharp___parent___internal___mediaType'
   | 'childrenImageSharp___parent___internal___owner'
   | 'childrenImageSharp___parent___internal___type'
+  | 'childrenImageSharp___parent___internal___contentFilePath'
   | 'childrenImageSharp___children'
   | 'childrenImageSharp___children___id'
   | 'childrenImageSharp___children___parent___id'
@@ -1520,6 +1528,7 @@ export type FileFieldsEnum =
   | 'childrenImageSharp___children___internal___mediaType'
   | 'childrenImageSharp___children___internal___owner'
   | 'childrenImageSharp___children___internal___type'
+  | 'childrenImageSharp___children___internal___contentFilePath'
   | 'childrenImageSharp___internal___content'
   | 'childrenImageSharp___internal___contentDigest'
   | 'childrenImageSharp___internal___description'
@@ -1528,6 +1537,7 @@ export type FileFieldsEnum =
   | 'childrenImageSharp___internal___mediaType'
   | 'childrenImageSharp___internal___owner'
   | 'childrenImageSharp___internal___type'
+  | 'childrenImageSharp___internal___contentFilePath'
   | 'childImageSharp___fixed___base64'
   | 'childImageSharp___fixed___tracedSVG'
   | 'childImageSharp___fixed___aspectRatio'
@@ -1575,6 +1585,7 @@ export type FileFieldsEnum =
   | 'childImageSharp___parent___internal___mediaType'
   | 'childImageSharp___parent___internal___owner'
   | 'childImageSharp___parent___internal___type'
+  | 'childImageSharp___parent___internal___contentFilePath'
   | 'childImageSharp___children'
   | 'childImageSharp___children___id'
   | 'childImageSharp___children___parent___id'
@@ -1590,6 +1601,7 @@ export type FileFieldsEnum =
   | 'childImageSharp___children___internal___mediaType'
   | 'childImageSharp___children___internal___owner'
   | 'childImageSharp___children___internal___type'
+  | 'childImageSharp___children___internal___contentFilePath'
   | 'childImageSharp___internal___content'
   | 'childImageSharp___internal___contentDigest'
   | 'childImageSharp___internal___description'
@@ -1598,6 +1610,7 @@ export type FileFieldsEnum =
   | 'childImageSharp___internal___mediaType'
   | 'childImageSharp___internal___owner'
   | 'childImageSharp___internal___type'
+  | 'childImageSharp___internal___contentFilePath'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -1614,6 +1627,7 @@ export type FileFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -1629,6 +1643,7 @@ export type FileFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -1637,6 +1652,7 @@ export type FileFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -1653,6 +1669,7 @@ export type FileFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -1668,6 +1685,7 @@ export type FileFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -1676,6 +1694,7 @@ export type FileFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -1683,7 +1702,8 @@ export type FileFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type FileGroupConnection = {
   totalCount: Scalars['Int'];
@@ -1871,6 +1891,7 @@ export type DirectoryFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -1886,6 +1907,7 @@ export type DirectoryFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -1894,6 +1916,7 @@ export type DirectoryFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -1910,6 +1933,7 @@ export type DirectoryFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -1925,6 +1949,7 @@ export type DirectoryFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -1933,6 +1958,7 @@ export type DirectoryFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -1940,7 +1966,8 @@ export type DirectoryFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type DirectoryGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2032,6 +2059,11 @@ export type SiteSiteMetadataFilterInput = {
   siteUrl?: InputMaybe<StringQueryOperatorInput>;
 };
 
+export type SiteGraphqlTypegenFilterInput = {
+  typesOutputPath?: InputMaybe<StringQueryOperatorInput>;
+  generateOnBuild?: InputMaybe<BooleanQueryOperatorInput>;
+};
+
 export type SiteConnection = {
   totalCount: Scalars['Int'];
   edges: Array<SiteEdge>;
@@ -2084,7 +2116,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteUrl'
   | 'port'
   | 'host'
-  | 'graphqlTypegen'
+  | 'graphqlTypegen___typesOutputPath'
+  | 'graphqlTypegen___generateOnBuild'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2105,6 +2138,7 @@ export type SiteFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -2120,6 +2154,7 @@ export type SiteFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -2128,6 +2163,7 @@ export type SiteFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -2144,6 +2180,7 @@ export type SiteFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -2159,6 +2196,7 @@ export type SiteFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -2167,6 +2205,7 @@ export type SiteFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -2174,7 +2213,8 @@ export type SiteFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type SiteGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2222,7 +2262,7 @@ export type SiteFilterInput = {
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
   port?: InputMaybe<IntQueryOperatorInput>;
   host?: InputMaybe<StringQueryOperatorInput>;
-  graphqlTypegen?: InputMaybe<BooleanQueryOperatorInput>;
+  graphqlTypegen?: InputMaybe<SiteGraphqlTypegenFilterInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -2307,6 +2347,7 @@ export type SiteFunctionFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -2322,6 +2363,7 @@ export type SiteFunctionFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -2330,6 +2372,7 @@ export type SiteFunctionFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -2346,6 +2389,7 @@ export type SiteFunctionFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -2361,6 +2405,7 @@ export type SiteFunctionFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -2369,6 +2414,7 @@ export type SiteFunctionFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -2376,7 +2422,8 @@ export type SiteFunctionFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type SiteFunctionGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2539,6 +2586,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___parent___internal___mediaType'
   | 'pluginCreator___parent___internal___owner'
   | 'pluginCreator___parent___internal___type'
+  | 'pluginCreator___parent___internal___contentFilePath'
   | 'pluginCreator___children'
   | 'pluginCreator___children___id'
   | 'pluginCreator___children___parent___id'
@@ -2554,6 +2602,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___children___internal___mediaType'
   | 'pluginCreator___children___internal___owner'
   | 'pluginCreator___children___internal___type'
+  | 'pluginCreator___children___internal___contentFilePath'
   | 'pluginCreator___internal___content'
   | 'pluginCreator___internal___contentDigest'
   | 'pluginCreator___internal___description'
@@ -2562,6 +2611,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___internal___mediaType'
   | 'pluginCreator___internal___owner'
   | 'pluginCreator___internal___type'
+  | 'pluginCreator___internal___contentFilePath'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2578,6 +2628,7 @@ export type SitePageFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -2593,6 +2644,7 @@ export type SitePageFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -2601,6 +2653,7 @@ export type SitePageFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -2617,6 +2670,7 @@ export type SitePageFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -2632,6 +2686,7 @@ export type SitePageFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -2640,6 +2695,7 @@ export type SitePageFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -2647,7 +2703,8 @@ export type SitePageFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type SitePageGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2780,6 +2837,7 @@ export type SitePluginFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -2795,6 +2853,7 @@ export type SitePluginFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -2803,6 +2862,7 @@ export type SitePluginFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -2819,6 +2879,7 @@ export type SitePluginFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -2834,6 +2895,7 @@ export type SitePluginFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -2842,6 +2904,7 @@ export type SitePluginFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -2849,7 +2912,8 @@ export type SitePluginFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type SitePluginGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2960,6 +3024,7 @@ export type SiteBuildMetadataFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -2975,6 +3040,7 @@ export type SiteBuildMetadataFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -2983,6 +3049,7 @@ export type SiteBuildMetadataFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -2999,6 +3066,7 @@ export type SiteBuildMetadataFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -3014,6 +3082,7 @@ export type SiteBuildMetadataFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -3022,6 +3091,7 @@ export type SiteBuildMetadataFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -3029,7 +3099,8 @@ export type SiteBuildMetadataFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type SiteBuildMetadataGroupConnection = {
   totalCount: Scalars['Int'];
@@ -3179,6 +3250,7 @@ export type ImageSharpFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -3194,6 +3266,7 @@ export type ImageSharpFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -3202,6 +3275,7 @@ export type ImageSharpFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -3218,6 +3292,7 @@ export type ImageSharpFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -3233,6 +3308,7 @@ export type ImageSharpFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -3241,6 +3317,7 @@ export type ImageSharpFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -3248,7 +3325,8 @@ export type ImageSharpFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type ImageSharpGroupConnection = {
   totalCount: Scalars['Int'];
@@ -3585,6 +3663,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'publishedBy___parent___internal___mediaType'
   | 'publishedBy___parent___internal___owner'
   | 'publishedBy___parent___internal___type'
+  | 'publishedBy___parent___internal___contentFilePath'
   | 'publishedBy___children'
   | 'publishedBy___children___id'
   | 'publishedBy___children___parent___id'
@@ -3600,6 +3679,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'publishedBy___children___internal___mediaType'
   | 'publishedBy___children___internal___owner'
   | 'publishedBy___children___internal___type'
+  | 'publishedBy___children___internal___contentFilePath'
   | 'publishedBy___internal___content'
   | 'publishedBy___internal___contentDigest'
   | 'publishedBy___internal___description'
@@ -3608,6 +3688,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'publishedBy___internal___mediaType'
   | 'publishedBy___internal___owner'
   | 'publishedBy___internal___type'
+  | 'publishedBy___internal___contentFilePath'
   | 'updatedBy___remoteTypeName'
   | 'updatedBy___remoteId'
   | 'updatedBy___stage'
@@ -3633,6 +3714,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'updatedBy___parent___internal___mediaType'
   | 'updatedBy___parent___internal___owner'
   | 'updatedBy___parent___internal___type'
+  | 'updatedBy___parent___internal___contentFilePath'
   | 'updatedBy___children'
   | 'updatedBy___children___id'
   | 'updatedBy___children___parent___id'
@@ -3648,6 +3730,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'updatedBy___children___internal___mediaType'
   | 'updatedBy___children___internal___owner'
   | 'updatedBy___children___internal___type'
+  | 'updatedBy___children___internal___contentFilePath'
   | 'updatedBy___internal___content'
   | 'updatedBy___internal___contentDigest'
   | 'updatedBy___internal___description'
@@ -3656,6 +3739,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'updatedBy___internal___mediaType'
   | 'updatedBy___internal___owner'
   | 'updatedBy___internal___type'
+  | 'updatedBy___internal___contentFilePath'
   | 'createdBy___remoteTypeName'
   | 'createdBy___remoteId'
   | 'createdBy___stage'
@@ -3681,6 +3765,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'createdBy___parent___internal___mediaType'
   | 'createdBy___parent___internal___owner'
   | 'createdBy___parent___internal___type'
+  | 'createdBy___parent___internal___contentFilePath'
   | 'createdBy___children'
   | 'createdBy___children___id'
   | 'createdBy___children___parent___id'
@@ -3696,6 +3781,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'createdBy___children___internal___mediaType'
   | 'createdBy___children___internal___owner'
   | 'createdBy___children___internal___type'
+  | 'createdBy___children___internal___contentFilePath'
   | 'createdBy___internal___content'
   | 'createdBy___internal___contentDigest'
   | 'createdBy___internal___description'
@@ -3704,6 +3790,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'createdBy___internal___mediaType'
   | 'createdBy___internal___owner'
   | 'createdBy___internal___type'
+  | 'createdBy___internal___contentFilePath'
   | 'backgroundImageCV'
   | 'backgroundImageCV___remoteTypeName'
   | 'backgroundImageCV___remoteId'
@@ -3782,6 +3869,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___publishedBy___internal___mediaType'
   | 'backgroundImageCV___publishedBy___internal___owner'
   | 'backgroundImageCV___publishedBy___internal___type'
+  | 'backgroundImageCV___publishedBy___internal___contentFilePath'
   | 'backgroundImageCV___updatedBy___remoteTypeName'
   | 'backgroundImageCV___updatedBy___remoteId'
   | 'backgroundImageCV___updatedBy___stage'
@@ -3806,6 +3894,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___updatedBy___internal___mediaType'
   | 'backgroundImageCV___updatedBy___internal___owner'
   | 'backgroundImageCV___updatedBy___internal___type'
+  | 'backgroundImageCV___updatedBy___internal___contentFilePath'
   | 'backgroundImageCV___createdBy___remoteTypeName'
   | 'backgroundImageCV___createdBy___remoteId'
   | 'backgroundImageCV___createdBy___stage'
@@ -3830,6 +3919,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___createdBy___internal___mediaType'
   | 'backgroundImageCV___createdBy___internal___owner'
   | 'backgroundImageCV___createdBy___internal___type'
+  | 'backgroundImageCV___createdBy___internal___contentFilePath'
   | 'backgroundImageCV___backgroundImage___remoteTypeName'
   | 'backgroundImageCV___backgroundImage___remoteId'
   | 'backgroundImageCV___backgroundImage___locale'
@@ -3958,6 +4048,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___backgroundImage___internal___mediaType'
   | 'backgroundImageCV___backgroundImage___internal___owner'
   | 'backgroundImageCV___backgroundImage___internal___type'
+  | 'backgroundImageCV___backgroundImage___internal___contentFilePath'
   | 'backgroundImageCV___scheduledIn'
   | 'backgroundImageCV___scheduledIn___remoteTypeName'
   | 'backgroundImageCV___scheduledIn___remoteId'
@@ -4035,6 +4126,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___scheduledIn___internal___mediaType'
   | 'backgroundImageCV___scheduledIn___internal___owner'
   | 'backgroundImageCV___scheduledIn___internal___type'
+  | 'backgroundImageCV___scheduledIn___internal___contentFilePath'
   | 'backgroundImageCV___id'
   | 'backgroundImageCV___parent___id'
   | 'backgroundImageCV___parent___parent___id'
@@ -4050,6 +4142,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___parent___internal___mediaType'
   | 'backgroundImageCV___parent___internal___owner'
   | 'backgroundImageCV___parent___internal___type'
+  | 'backgroundImageCV___parent___internal___contentFilePath'
   | 'backgroundImageCV___children'
   | 'backgroundImageCV___children___id'
   | 'backgroundImageCV___children___parent___id'
@@ -4065,6 +4158,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___children___internal___mediaType'
   | 'backgroundImageCV___children___internal___owner'
   | 'backgroundImageCV___children___internal___type'
+  | 'backgroundImageCV___children___internal___contentFilePath'
   | 'backgroundImageCV___internal___content'
   | 'backgroundImageCV___internal___contentDigest'
   | 'backgroundImageCV___internal___description'
@@ -4073,6 +4167,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___internal___mediaType'
   | 'backgroundImageCV___internal___owner'
   | 'backgroundImageCV___internal___type'
+  | 'backgroundImageCV___internal___contentFilePath'
   | 'scheduledIn'
   | 'scheduledIn___remoteTypeName'
   | 'scheduledIn___remoteId'
@@ -4159,6 +4254,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'scheduledIn___release___internal___mediaType'
   | 'scheduledIn___release___internal___owner'
   | 'scheduledIn___release___internal___type'
+  | 'scheduledIn___release___internal___contentFilePath'
   | 'scheduledIn___publishedBy___remoteTypeName'
   | 'scheduledIn___publishedBy___remoteId'
   | 'scheduledIn___publishedBy___stage'
@@ -4183,6 +4279,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'scheduledIn___publishedBy___internal___mediaType'
   | 'scheduledIn___publishedBy___internal___owner'
   | 'scheduledIn___publishedBy___internal___type'
+  | 'scheduledIn___publishedBy___internal___contentFilePath'
   | 'scheduledIn___updatedBy___remoteTypeName'
   | 'scheduledIn___updatedBy___remoteId'
   | 'scheduledIn___updatedBy___stage'
@@ -4207,6 +4304,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'scheduledIn___updatedBy___internal___mediaType'
   | 'scheduledIn___updatedBy___internal___owner'
   | 'scheduledIn___updatedBy___internal___type'
+  | 'scheduledIn___updatedBy___internal___contentFilePath'
   | 'scheduledIn___createdBy___remoteTypeName'
   | 'scheduledIn___createdBy___remoteId'
   | 'scheduledIn___createdBy___stage'
@@ -4231,6 +4329,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'scheduledIn___createdBy___internal___mediaType'
   | 'scheduledIn___createdBy___internal___owner'
   | 'scheduledIn___createdBy___internal___type'
+  | 'scheduledIn___createdBy___internal___contentFilePath'
   | 'scheduledIn___status'
   | 'scheduledIn___id'
   | 'scheduledIn___parent___id'
@@ -4247,6 +4346,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'scheduledIn___parent___internal___mediaType'
   | 'scheduledIn___parent___internal___owner'
   | 'scheduledIn___parent___internal___type'
+  | 'scheduledIn___parent___internal___contentFilePath'
   | 'scheduledIn___children'
   | 'scheduledIn___children___id'
   | 'scheduledIn___children___parent___id'
@@ -4262,6 +4362,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'scheduledIn___children___internal___mediaType'
   | 'scheduledIn___children___internal___owner'
   | 'scheduledIn___children___internal___type'
+  | 'scheduledIn___children___internal___contentFilePath'
   | 'scheduledIn___internal___content'
   | 'scheduledIn___internal___contentDigest'
   | 'scheduledIn___internal___description'
@@ -4270,6 +4371,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'scheduledIn___internal___mediaType'
   | 'scheduledIn___internal___owner'
   | 'scheduledIn___internal___type'
+  | 'scheduledIn___internal___contentFilePath'
   | 'url'
   | 'localFile___sourceInstanceName'
   | 'localFile___absolutePath'
@@ -4352,6 +4454,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'localFile___childrenImageSharp___internal___mediaType'
   | 'localFile___childrenImageSharp___internal___owner'
   | 'localFile___childrenImageSharp___internal___type'
+  | 'localFile___childrenImageSharp___internal___contentFilePath'
   | 'localFile___childImageSharp___fixed___base64'
   | 'localFile___childImageSharp___fixed___tracedSVG'
   | 'localFile___childImageSharp___fixed___aspectRatio'
@@ -4398,6 +4501,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'localFile___childImageSharp___internal___mediaType'
   | 'localFile___childImageSharp___internal___owner'
   | 'localFile___childImageSharp___internal___type'
+  | 'localFile___childImageSharp___internal___contentFilePath'
   | 'localFile___id'
   | 'localFile___parent___id'
   | 'localFile___parent___parent___id'
@@ -4413,6 +4517,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'localFile___parent___internal___mediaType'
   | 'localFile___parent___internal___owner'
   | 'localFile___parent___internal___type'
+  | 'localFile___parent___internal___contentFilePath'
   | 'localFile___children'
   | 'localFile___children___id'
   | 'localFile___children___parent___id'
@@ -4428,6 +4533,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'localFile___children___internal___mediaType'
   | 'localFile___children___internal___owner'
   | 'localFile___children___internal___type'
+  | 'localFile___children___internal___contentFilePath'
   | 'localFile___internal___content'
   | 'localFile___internal___contentDigest'
   | 'localFile___internal___description'
@@ -4436,6 +4542,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'localFile___internal___mediaType'
   | 'localFile___internal___owner'
   | 'localFile___internal___type'
+  | 'localFile___internal___contentFilePath'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -4452,6 +4559,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -4467,6 +4575,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -4475,6 +4584,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -4491,6 +4601,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -4506,6 +4617,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -4514,6 +4626,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -4521,7 +4634,8 @@ export type GraphCms_AssetFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type GraphCms_AssetGroupConnection = {
   totalCount: Scalars['Int'];
@@ -4641,6 +4755,7 @@ export type GraphCms_UserFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -4656,6 +4771,7 @@ export type GraphCms_UserFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -4664,6 +4780,7 @@ export type GraphCms_UserFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -4680,6 +4797,7 @@ export type GraphCms_UserFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -4695,6 +4813,7 @@ export type GraphCms_UserFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -4703,6 +4822,7 @@ export type GraphCms_UserFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -4710,7 +4830,8 @@ export type GraphCms_UserFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type GraphCms_UserGroupConnection = {
   totalCount: Scalars['Int'];
@@ -4950,6 +5071,7 @@ export type GraphCms_CvFieldsEnum =
   | 'aboutMeSection___picture___internal___mediaType'
   | 'aboutMeSection___picture___internal___owner'
   | 'aboutMeSection___picture___internal___type'
+  | 'aboutMeSection___picture___internal___contentFilePath'
   | 'experiences'
   | 'experiences___remoteTypeName'
   | 'experiences___stage'
@@ -4992,6 +5114,7 @@ export type GraphCms_CvFieldsEnum =
   | 'publishedBy___parent___internal___mediaType'
   | 'publishedBy___parent___internal___owner'
   | 'publishedBy___parent___internal___type'
+  | 'publishedBy___parent___internal___contentFilePath'
   | 'publishedBy___children'
   | 'publishedBy___children___id'
   | 'publishedBy___children___parent___id'
@@ -5007,6 +5130,7 @@ export type GraphCms_CvFieldsEnum =
   | 'publishedBy___children___internal___mediaType'
   | 'publishedBy___children___internal___owner'
   | 'publishedBy___children___internal___type'
+  | 'publishedBy___children___internal___contentFilePath'
   | 'publishedBy___internal___content'
   | 'publishedBy___internal___contentDigest'
   | 'publishedBy___internal___description'
@@ -5015,6 +5139,7 @@ export type GraphCms_CvFieldsEnum =
   | 'publishedBy___internal___mediaType'
   | 'publishedBy___internal___owner'
   | 'publishedBy___internal___type'
+  | 'publishedBy___internal___contentFilePath'
   | 'updatedBy___remoteTypeName'
   | 'updatedBy___remoteId'
   | 'updatedBy___stage'
@@ -5040,6 +5165,7 @@ export type GraphCms_CvFieldsEnum =
   | 'updatedBy___parent___internal___mediaType'
   | 'updatedBy___parent___internal___owner'
   | 'updatedBy___parent___internal___type'
+  | 'updatedBy___parent___internal___contentFilePath'
   | 'updatedBy___children'
   | 'updatedBy___children___id'
   | 'updatedBy___children___parent___id'
@@ -5055,6 +5181,7 @@ export type GraphCms_CvFieldsEnum =
   | 'updatedBy___children___internal___mediaType'
   | 'updatedBy___children___internal___owner'
   | 'updatedBy___children___internal___type'
+  | 'updatedBy___children___internal___contentFilePath'
   | 'updatedBy___internal___content'
   | 'updatedBy___internal___contentDigest'
   | 'updatedBy___internal___description'
@@ -5063,6 +5190,7 @@ export type GraphCms_CvFieldsEnum =
   | 'updatedBy___internal___mediaType'
   | 'updatedBy___internal___owner'
   | 'updatedBy___internal___type'
+  | 'updatedBy___internal___contentFilePath'
   | 'createdBy___remoteTypeName'
   | 'createdBy___remoteId'
   | 'createdBy___stage'
@@ -5088,6 +5216,7 @@ export type GraphCms_CvFieldsEnum =
   | 'createdBy___parent___internal___mediaType'
   | 'createdBy___parent___internal___owner'
   | 'createdBy___parent___internal___type'
+  | 'createdBy___parent___internal___contentFilePath'
   | 'createdBy___children'
   | 'createdBy___children___id'
   | 'createdBy___children___parent___id'
@@ -5103,6 +5232,7 @@ export type GraphCms_CvFieldsEnum =
   | 'createdBy___children___internal___mediaType'
   | 'createdBy___children___internal___owner'
   | 'createdBy___children___internal___type'
+  | 'createdBy___children___internal___contentFilePath'
   | 'createdBy___internal___content'
   | 'createdBy___internal___contentDigest'
   | 'createdBy___internal___description'
@@ -5111,6 +5241,7 @@ export type GraphCms_CvFieldsEnum =
   | 'createdBy___internal___mediaType'
   | 'createdBy___internal___owner'
   | 'createdBy___internal___type'
+  | 'createdBy___internal___contentFilePath'
   | 'backgroundImage___remoteTypeName'
   | 'backgroundImage___remoteId'
   | 'backgroundImage___locale'
@@ -5148,6 +5279,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___publishedBy___internal___mediaType'
   | 'backgroundImage___publishedBy___internal___owner'
   | 'backgroundImage___publishedBy___internal___type'
+  | 'backgroundImage___publishedBy___internal___contentFilePath'
   | 'backgroundImage___updatedBy___remoteTypeName'
   | 'backgroundImage___updatedBy___remoteId'
   | 'backgroundImage___updatedBy___stage'
@@ -5172,6 +5304,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___updatedBy___internal___mediaType'
   | 'backgroundImage___updatedBy___internal___owner'
   | 'backgroundImage___updatedBy___internal___type'
+  | 'backgroundImage___updatedBy___internal___contentFilePath'
   | 'backgroundImage___createdBy___remoteTypeName'
   | 'backgroundImage___createdBy___remoteId'
   | 'backgroundImage___createdBy___stage'
@@ -5196,6 +5329,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___createdBy___internal___mediaType'
   | 'backgroundImage___createdBy___internal___owner'
   | 'backgroundImage___createdBy___internal___type'
+  | 'backgroundImage___createdBy___internal___contentFilePath'
   | 'backgroundImage___backgroundImageCV'
   | 'backgroundImage___backgroundImageCV___remoteTypeName'
   | 'backgroundImage___backgroundImageCV___remoteId'
@@ -5313,6 +5447,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___backgroundImageCV___internal___mediaType'
   | 'backgroundImage___backgroundImageCV___internal___owner'
   | 'backgroundImage___backgroundImageCV___internal___type'
+  | 'backgroundImage___backgroundImageCV___internal___contentFilePath'
   | 'backgroundImage___scheduledIn'
   | 'backgroundImage___scheduledIn___remoteTypeName'
   | 'backgroundImage___scheduledIn___remoteId'
@@ -5390,6 +5525,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___scheduledIn___internal___mediaType'
   | 'backgroundImage___scheduledIn___internal___owner'
   | 'backgroundImage___scheduledIn___internal___type'
+  | 'backgroundImage___scheduledIn___internal___contentFilePath'
   | 'backgroundImage___url'
   | 'backgroundImage___localFile___sourceInstanceName'
   | 'backgroundImage___localFile___absolutePath'
@@ -5446,6 +5582,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___localFile___internal___mediaType'
   | 'backgroundImage___localFile___internal___owner'
   | 'backgroundImage___localFile___internal___type'
+  | 'backgroundImage___localFile___internal___contentFilePath'
   | 'backgroundImage___id'
   | 'backgroundImage___parent___id'
   | 'backgroundImage___parent___parent___id'
@@ -5461,6 +5598,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___parent___internal___mediaType'
   | 'backgroundImage___parent___internal___owner'
   | 'backgroundImage___parent___internal___type'
+  | 'backgroundImage___parent___internal___contentFilePath'
   | 'backgroundImage___children'
   | 'backgroundImage___children___id'
   | 'backgroundImage___children___parent___id'
@@ -5476,6 +5614,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___children___internal___mediaType'
   | 'backgroundImage___children___internal___owner'
   | 'backgroundImage___children___internal___type'
+  | 'backgroundImage___children___internal___contentFilePath'
   | 'backgroundImage___internal___content'
   | 'backgroundImage___internal___contentDigest'
   | 'backgroundImage___internal___description'
@@ -5484,6 +5623,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___internal___mediaType'
   | 'backgroundImage___internal___owner'
   | 'backgroundImage___internal___type'
+  | 'backgroundImage___internal___contentFilePath'
   | 'scheduledIn'
   | 'scheduledIn___remoteTypeName'
   | 'scheduledIn___remoteId'
@@ -5570,6 +5710,7 @@ export type GraphCms_CvFieldsEnum =
   | 'scheduledIn___release___internal___mediaType'
   | 'scheduledIn___release___internal___owner'
   | 'scheduledIn___release___internal___type'
+  | 'scheduledIn___release___internal___contentFilePath'
   | 'scheduledIn___publishedBy___remoteTypeName'
   | 'scheduledIn___publishedBy___remoteId'
   | 'scheduledIn___publishedBy___stage'
@@ -5594,6 +5735,7 @@ export type GraphCms_CvFieldsEnum =
   | 'scheduledIn___publishedBy___internal___mediaType'
   | 'scheduledIn___publishedBy___internal___owner'
   | 'scheduledIn___publishedBy___internal___type'
+  | 'scheduledIn___publishedBy___internal___contentFilePath'
   | 'scheduledIn___updatedBy___remoteTypeName'
   | 'scheduledIn___updatedBy___remoteId'
   | 'scheduledIn___updatedBy___stage'
@@ -5618,6 +5760,7 @@ export type GraphCms_CvFieldsEnum =
   | 'scheduledIn___updatedBy___internal___mediaType'
   | 'scheduledIn___updatedBy___internal___owner'
   | 'scheduledIn___updatedBy___internal___type'
+  | 'scheduledIn___updatedBy___internal___contentFilePath'
   | 'scheduledIn___createdBy___remoteTypeName'
   | 'scheduledIn___createdBy___remoteId'
   | 'scheduledIn___createdBy___stage'
@@ -5642,6 +5785,7 @@ export type GraphCms_CvFieldsEnum =
   | 'scheduledIn___createdBy___internal___mediaType'
   | 'scheduledIn___createdBy___internal___owner'
   | 'scheduledIn___createdBy___internal___type'
+  | 'scheduledIn___createdBy___internal___contentFilePath'
   | 'scheduledIn___status'
   | 'scheduledIn___id'
   | 'scheduledIn___parent___id'
@@ -5658,6 +5802,7 @@ export type GraphCms_CvFieldsEnum =
   | 'scheduledIn___parent___internal___mediaType'
   | 'scheduledIn___parent___internal___owner'
   | 'scheduledIn___parent___internal___type'
+  | 'scheduledIn___parent___internal___contentFilePath'
   | 'scheduledIn___children'
   | 'scheduledIn___children___id'
   | 'scheduledIn___children___parent___id'
@@ -5673,6 +5818,7 @@ export type GraphCms_CvFieldsEnum =
   | 'scheduledIn___children___internal___mediaType'
   | 'scheduledIn___children___internal___owner'
   | 'scheduledIn___children___internal___type'
+  | 'scheduledIn___children___internal___contentFilePath'
   | 'scheduledIn___internal___content'
   | 'scheduledIn___internal___contentDigest'
   | 'scheduledIn___internal___description'
@@ -5681,6 +5827,7 @@ export type GraphCms_CvFieldsEnum =
   | 'scheduledIn___internal___mediaType'
   | 'scheduledIn___internal___owner'
   | 'scheduledIn___internal___type'
+  | 'scheduledIn___internal___contentFilePath'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -5697,6 +5844,7 @@ export type GraphCms_CvFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -5712,6 +5860,7 @@ export type GraphCms_CvFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -5720,6 +5869,7 @@ export type GraphCms_CvFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -5736,6 +5886,7 @@ export type GraphCms_CvFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -5751,6 +5902,7 @@ export type GraphCms_CvFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -5759,6 +5911,7 @@ export type GraphCms_CvFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -5766,7 +5919,8 @@ export type GraphCms_CvFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type GraphCms_CvGroupConnection = {
   totalCount: Scalars['Int'];
@@ -5958,6 +6112,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'release___operations___internal___mediaType'
   | 'release___operations___internal___owner'
   | 'release___operations___internal___type'
+  | 'release___operations___internal___contentFilePath'
   | 'release___publishedBy___remoteTypeName'
   | 'release___publishedBy___remoteId'
   | 'release___publishedBy___stage'
@@ -5982,6 +6137,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'release___publishedBy___internal___mediaType'
   | 'release___publishedBy___internal___owner'
   | 'release___publishedBy___internal___type'
+  | 'release___publishedBy___internal___contentFilePath'
   | 'release___updatedBy___remoteTypeName'
   | 'release___updatedBy___remoteId'
   | 'release___updatedBy___stage'
@@ -6006,6 +6162,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'release___updatedBy___internal___mediaType'
   | 'release___updatedBy___internal___owner'
   | 'release___updatedBy___internal___type'
+  | 'release___updatedBy___internal___contentFilePath'
   | 'release___createdBy___remoteTypeName'
   | 'release___createdBy___remoteId'
   | 'release___createdBy___stage'
@@ -6030,6 +6187,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'release___createdBy___internal___mediaType'
   | 'release___createdBy___internal___owner'
   | 'release___createdBy___internal___type'
+  | 'release___createdBy___internal___contentFilePath'
   | 'release___status'
   | 'release___id'
   | 'release___parent___id'
@@ -6046,6 +6204,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'release___parent___internal___mediaType'
   | 'release___parent___internal___owner'
   | 'release___parent___internal___type'
+  | 'release___parent___internal___contentFilePath'
   | 'release___children'
   | 'release___children___id'
   | 'release___children___parent___id'
@@ -6061,6 +6220,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'release___children___internal___mediaType'
   | 'release___children___internal___owner'
   | 'release___children___internal___type'
+  | 'release___children___internal___contentFilePath'
   | 'release___internal___content'
   | 'release___internal___contentDigest'
   | 'release___internal___description'
@@ -6069,6 +6229,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'release___internal___mediaType'
   | 'release___internal___owner'
   | 'release___internal___type'
+  | 'release___internal___contentFilePath'
   | 'publishedBy___remoteTypeName'
   | 'publishedBy___remoteId'
   | 'publishedBy___stage'
@@ -6094,6 +6255,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'publishedBy___parent___internal___mediaType'
   | 'publishedBy___parent___internal___owner'
   | 'publishedBy___parent___internal___type'
+  | 'publishedBy___parent___internal___contentFilePath'
   | 'publishedBy___children'
   | 'publishedBy___children___id'
   | 'publishedBy___children___parent___id'
@@ -6109,6 +6271,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'publishedBy___children___internal___mediaType'
   | 'publishedBy___children___internal___owner'
   | 'publishedBy___children___internal___type'
+  | 'publishedBy___children___internal___contentFilePath'
   | 'publishedBy___internal___content'
   | 'publishedBy___internal___contentDigest'
   | 'publishedBy___internal___description'
@@ -6117,6 +6280,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'publishedBy___internal___mediaType'
   | 'publishedBy___internal___owner'
   | 'publishedBy___internal___type'
+  | 'publishedBy___internal___contentFilePath'
   | 'updatedBy___remoteTypeName'
   | 'updatedBy___remoteId'
   | 'updatedBy___stage'
@@ -6142,6 +6306,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'updatedBy___parent___internal___mediaType'
   | 'updatedBy___parent___internal___owner'
   | 'updatedBy___parent___internal___type'
+  | 'updatedBy___parent___internal___contentFilePath'
   | 'updatedBy___children'
   | 'updatedBy___children___id'
   | 'updatedBy___children___parent___id'
@@ -6157,6 +6322,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'updatedBy___children___internal___mediaType'
   | 'updatedBy___children___internal___owner'
   | 'updatedBy___children___internal___type'
+  | 'updatedBy___children___internal___contentFilePath'
   | 'updatedBy___internal___content'
   | 'updatedBy___internal___contentDigest'
   | 'updatedBy___internal___description'
@@ -6165,6 +6331,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'updatedBy___internal___mediaType'
   | 'updatedBy___internal___owner'
   | 'updatedBy___internal___type'
+  | 'updatedBy___internal___contentFilePath'
   | 'createdBy___remoteTypeName'
   | 'createdBy___remoteId'
   | 'createdBy___stage'
@@ -6190,6 +6357,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'createdBy___parent___internal___mediaType'
   | 'createdBy___parent___internal___owner'
   | 'createdBy___parent___internal___type'
+  | 'createdBy___parent___internal___contentFilePath'
   | 'createdBy___children'
   | 'createdBy___children___id'
   | 'createdBy___children___parent___id'
@@ -6205,6 +6373,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'createdBy___children___internal___mediaType'
   | 'createdBy___children___internal___owner'
   | 'createdBy___children___internal___type'
+  | 'createdBy___children___internal___contentFilePath'
   | 'createdBy___internal___content'
   | 'createdBy___internal___contentDigest'
   | 'createdBy___internal___description'
@@ -6213,6 +6382,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'createdBy___internal___mediaType'
   | 'createdBy___internal___owner'
   | 'createdBy___internal___type'
+  | 'createdBy___internal___contentFilePath'
   | 'status'
   | 'id'
   | 'parent___id'
@@ -6230,6 +6400,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -6245,6 +6416,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -6253,6 +6425,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -6269,6 +6442,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -6284,6 +6458,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -6292,6 +6467,7 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -6299,7 +6475,8 @@ export type GraphCms_ScheduledOperationFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type GraphCms_ScheduledOperationGroupConnection = {
   totalCount: Scalars['Int'];
@@ -6491,6 +6668,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'operations___release___internal___mediaType'
   | 'operations___release___internal___owner'
   | 'operations___release___internal___type'
+  | 'operations___release___internal___contentFilePath'
   | 'operations___publishedBy___remoteTypeName'
   | 'operations___publishedBy___remoteId'
   | 'operations___publishedBy___stage'
@@ -6515,6 +6693,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'operations___publishedBy___internal___mediaType'
   | 'operations___publishedBy___internal___owner'
   | 'operations___publishedBy___internal___type'
+  | 'operations___publishedBy___internal___contentFilePath'
   | 'operations___updatedBy___remoteTypeName'
   | 'operations___updatedBy___remoteId'
   | 'operations___updatedBy___stage'
@@ -6539,6 +6718,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'operations___updatedBy___internal___mediaType'
   | 'operations___updatedBy___internal___owner'
   | 'operations___updatedBy___internal___type'
+  | 'operations___updatedBy___internal___contentFilePath'
   | 'operations___createdBy___remoteTypeName'
   | 'operations___createdBy___remoteId'
   | 'operations___createdBy___stage'
@@ -6563,6 +6743,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'operations___createdBy___internal___mediaType'
   | 'operations___createdBy___internal___owner'
   | 'operations___createdBy___internal___type'
+  | 'operations___createdBy___internal___contentFilePath'
   | 'operations___status'
   | 'operations___id'
   | 'operations___parent___id'
@@ -6579,6 +6760,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'operations___parent___internal___mediaType'
   | 'operations___parent___internal___owner'
   | 'operations___parent___internal___type'
+  | 'operations___parent___internal___contentFilePath'
   | 'operations___children'
   | 'operations___children___id'
   | 'operations___children___parent___id'
@@ -6594,6 +6776,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'operations___children___internal___mediaType'
   | 'operations___children___internal___owner'
   | 'operations___children___internal___type'
+  | 'operations___children___internal___contentFilePath'
   | 'operations___internal___content'
   | 'operations___internal___contentDigest'
   | 'operations___internal___description'
@@ -6602,6 +6785,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'operations___internal___mediaType'
   | 'operations___internal___owner'
   | 'operations___internal___type'
+  | 'operations___internal___contentFilePath'
   | 'publishedBy___remoteTypeName'
   | 'publishedBy___remoteId'
   | 'publishedBy___stage'
@@ -6627,6 +6811,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'publishedBy___parent___internal___mediaType'
   | 'publishedBy___parent___internal___owner'
   | 'publishedBy___parent___internal___type'
+  | 'publishedBy___parent___internal___contentFilePath'
   | 'publishedBy___children'
   | 'publishedBy___children___id'
   | 'publishedBy___children___parent___id'
@@ -6642,6 +6827,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'publishedBy___children___internal___mediaType'
   | 'publishedBy___children___internal___owner'
   | 'publishedBy___children___internal___type'
+  | 'publishedBy___children___internal___contentFilePath'
   | 'publishedBy___internal___content'
   | 'publishedBy___internal___contentDigest'
   | 'publishedBy___internal___description'
@@ -6650,6 +6836,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'publishedBy___internal___mediaType'
   | 'publishedBy___internal___owner'
   | 'publishedBy___internal___type'
+  | 'publishedBy___internal___contentFilePath'
   | 'updatedBy___remoteTypeName'
   | 'updatedBy___remoteId'
   | 'updatedBy___stage'
@@ -6675,6 +6862,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'updatedBy___parent___internal___mediaType'
   | 'updatedBy___parent___internal___owner'
   | 'updatedBy___parent___internal___type'
+  | 'updatedBy___parent___internal___contentFilePath'
   | 'updatedBy___children'
   | 'updatedBy___children___id'
   | 'updatedBy___children___parent___id'
@@ -6690,6 +6878,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'updatedBy___children___internal___mediaType'
   | 'updatedBy___children___internal___owner'
   | 'updatedBy___children___internal___type'
+  | 'updatedBy___children___internal___contentFilePath'
   | 'updatedBy___internal___content'
   | 'updatedBy___internal___contentDigest'
   | 'updatedBy___internal___description'
@@ -6698,6 +6887,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'updatedBy___internal___mediaType'
   | 'updatedBy___internal___owner'
   | 'updatedBy___internal___type'
+  | 'updatedBy___internal___contentFilePath'
   | 'createdBy___remoteTypeName'
   | 'createdBy___remoteId'
   | 'createdBy___stage'
@@ -6723,6 +6913,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'createdBy___parent___internal___mediaType'
   | 'createdBy___parent___internal___owner'
   | 'createdBy___parent___internal___type'
+  | 'createdBy___parent___internal___contentFilePath'
   | 'createdBy___children'
   | 'createdBy___children___id'
   | 'createdBy___children___parent___id'
@@ -6738,6 +6929,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'createdBy___children___internal___mediaType'
   | 'createdBy___children___internal___owner'
   | 'createdBy___children___internal___type'
+  | 'createdBy___children___internal___contentFilePath'
   | 'createdBy___internal___content'
   | 'createdBy___internal___contentDigest'
   | 'createdBy___internal___description'
@@ -6746,6 +6938,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'createdBy___internal___mediaType'
   | 'createdBy___internal___owner'
   | 'createdBy___internal___type'
+  | 'createdBy___internal___contentFilePath'
   | 'status'
   | 'id'
   | 'parent___id'
@@ -6763,6 +6956,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'parent___parent___internal___mediaType'
   | 'parent___parent___internal___owner'
   | 'parent___parent___internal___type'
+  | 'parent___parent___internal___contentFilePath'
   | 'parent___children'
   | 'parent___children___id'
   | 'parent___children___parent___id'
@@ -6778,6 +6972,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'parent___children___internal___mediaType'
   | 'parent___children___internal___owner'
   | 'parent___children___internal___type'
+  | 'parent___children___internal___contentFilePath'
   | 'parent___internal___content'
   | 'parent___internal___contentDigest'
   | 'parent___internal___description'
@@ -6786,6 +6981,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'parent___internal___mediaType'
   | 'parent___internal___owner'
   | 'parent___internal___type'
+  | 'parent___internal___contentFilePath'
   | 'children'
   | 'children___id'
   | 'children___parent___id'
@@ -6802,6 +6998,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'children___parent___internal___mediaType'
   | 'children___parent___internal___owner'
   | 'children___parent___internal___type'
+  | 'children___parent___internal___contentFilePath'
   | 'children___children'
   | 'children___children___id'
   | 'children___children___parent___id'
@@ -6817,6 +7014,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'children___children___internal___mediaType'
   | 'children___children___internal___owner'
   | 'children___children___internal___type'
+  | 'children___children___internal___contentFilePath'
   | 'children___internal___content'
   | 'children___internal___contentDigest'
   | 'children___internal___description'
@@ -6825,6 +7023,7 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'children___internal___mediaType'
   | 'children___internal___owner'
   | 'children___internal___type'
+  | 'children___internal___contentFilePath'
   | 'internal___content'
   | 'internal___contentDigest'
   | 'internal___description'
@@ -6832,7 +7031,8 @@ export type GraphCms_ScheduledReleaseFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'internal___contentFilePath';
 
 export type GraphCms_ScheduledReleaseGroupConnection = {
   totalCount: Scalars['Int'];
