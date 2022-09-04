@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Line } from '../line/line'
+import { Line } from '../Line/Line'
 
 interface CvSectionProps {
     title: string

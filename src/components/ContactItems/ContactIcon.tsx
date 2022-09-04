@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { IconContext, IconType } from 'react-icons'
-import * as styles from './contact-items.module.css'
+import * as styles from './ContactItems.module.css'
 
 interface ContactIconProps {
     icon: IconType

@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import BackgroundImage, { IFluidObject } from 'gatsby-background-image'
 import { BackgroundImageQuery } from '../../../graphql-types'
-import * as styles from './background.module.css'
+import * as styles from './Background.module.css'
 
 export const Background: FC<PropsWithChildren> = ({ children }) => {
     const queryData: BackgroundImageQuery = useStaticQuery(graphql`
