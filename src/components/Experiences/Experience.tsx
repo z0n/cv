@@ -22,7 +22,7 @@ export const Experience: FC<ExperienceProps> = ({ experience }) => {
 
     return (
         <Card>
-            <h3>{experience.position}</h3>
+            <h4>{experience.position}</h4>
             <div className={styles.subtitle}>
                 <span>{experience.company}</span>
                 <span>
@@ -30,7 +30,7 @@ export const Experience: FC<ExperienceProps> = ({ experience }) => {
                 </span>
             </div>
             {experience.description && (
-                <span>
+                <span className={styles.description}>
                     <ReactMarkdown>{experience.description}</ReactMarkdown>
                 </span>
             )}

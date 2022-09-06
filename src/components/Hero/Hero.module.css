@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 3rem 0;
+    position: relative;
+    color: var(--text-color-on-header-background);
+    text-shadow: 0 0 0.1rem rgb(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    filter: brightness(80%) blur(0.2rem);
+    z-index: -100;
+    transform: scale(1.01);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    align-self: center;
+}
+
+.avatar {
+    max-height: min(60vw, 8rem);
+    max-width: min(60vw, 8rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    align-self: center;
+    border: var(--text-color-on-header-background) solid 0.1rem;
+    box-shadow: 0 0 0.1rem rgb(0, 0, 0, 0.5);
+}
+
+.item {
+    margin: 0 1rem;
+    text-align: center;
+}
+
+.name {
+    white-space: nowrap;
+}
+
+.contactInformation {
+    gap: 0.5rem;
+}

@@ -743,6 +743,7 @@ export type GraphCms_AboutMeSection = {
   locale: GraphCms_Locale;
   id: Scalars['ID'];
   description?: Maybe<Scalars['String']>;
+  longDescription: Scalars['String'];
   location?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
@@ -797,19 +798,19 @@ export type GraphCms_ScheduledRelease = Node & {
 };
 
 export type GraphCms_ScheduledOperationStatus =
-  | 'PENDING'
-  | 'IN_PROGRESS'
+  | 'CANCELED'
   | 'COMPLETED'
   | 'FAILED'
-  | 'CANCELED';
+  | 'IN_PROGRESS'
+  | 'PENDING';
 
 export type GraphCms_ScheduledOperationAffectedDocument = GraphCms_Asset | GraphCms_Cv;
 
 export type GraphCms_ScheduledReleaseStatus =
-  | 'PENDING'
-  | 'IN_PROGRESS'
   | 'COMPLETED'
-  | 'FAILED';
+  | 'FAILED'
+  | 'IN_PROGRESS'
+  | 'PENDING';
 
 export type GraphCms_UserKind =
   | 'MEMBER'
@@ -3452,6 +3453,7 @@ export type GraphCms_AboutMeSectionFilterInput = {
   locale?: InputMaybe<GraphCms_LocaleQueryOperatorInput>;
   id?: InputMaybe<IdQueryOperatorInput>;
   description?: InputMaybe<StringQueryOperatorInput>;
+  longDescription?: InputMaybe<StringQueryOperatorInput>;
   location?: InputMaybe<StringQueryOperatorInput>;
   phone?: InputMaybe<StringQueryOperatorInput>;
   email?: InputMaybe<StringQueryOperatorInput>;
@@ -3805,6 +3807,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___aboutMeSection___locale'
   | 'backgroundImageCV___aboutMeSection___id'
   | 'backgroundImageCV___aboutMeSection___description'
+  | 'backgroundImageCV___aboutMeSection___longDescription'
   | 'backgroundImageCV___aboutMeSection___location'
   | 'backgroundImageCV___aboutMeSection___phone'
   | 'backgroundImageCV___aboutMeSection___email'
@@ -4938,6 +4941,7 @@ export type GraphCms_CvFieldsEnum =
   | 'aboutMeSection___locale'
   | 'aboutMeSection___id'
   | 'aboutMeSection___description'
+  | 'aboutMeSection___longDescription'
   | 'aboutMeSection___location'
   | 'aboutMeSection___phone'
   | 'aboutMeSection___email'
@@ -5344,6 +5348,7 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___backgroundImageCV___aboutMeSection___locale'
   | 'backgroundImage___backgroundImageCV___aboutMeSection___id'
   | 'backgroundImage___backgroundImageCV___aboutMeSection___description'
+  | 'backgroundImage___backgroundImageCV___aboutMeSection___longDescription'
   | 'backgroundImage___backgroundImageCV___aboutMeSection___location'
   | 'backgroundImage___backgroundImageCV___aboutMeSection___phone'
   | 'backgroundImage___backgroundImageCV___aboutMeSection___email'
@@ -7080,25 +7085,25 @@ export type GraphCms_ScheduledReleaseSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type AboutMeSectionQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AboutMeSectionQuery = { allGraphCmsCv: { nodes: Array<{ name: string, aboutMeSection: { description?: string | null, location?: string | null, phone?: string | null, email?: string | null, linkedin?: string | null, github?: string | null, picture: { gatsbyImageData?: any | null } } }> } };
-
-export type BackgroundImageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type BackgroundImageQuery = { allGraphCmsCv: { nodes: Array<{ name: string, backgroundImage?: { localFile?: { childImageSharp?: { fluid?: { base64?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null } | null } | null } | null }> } };
-
 export type ExperiencesSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ExperiencesSectionQuery = { allGraphCmsCv: { nodes: Array<{ name: string, experiences: Array<{ id: string, position: string, company: string, startDate: any, endDate?: any | null, description?: string | null, technologies: Array<string> }> }> } };
 
+export type HeroQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HeroQuery = { allGraphCmsCv: { nodes: Array<{ name: string, aboutMeSection: { description?: string | null, location?: string | null, phone?: string | null, email?: string | null, linkedin?: string | null, github?: string | null, picture: { gatsbyImageData?: any | null } }, backgroundImage?: { localFile?: { childImageSharp?: { gatsbyImageData: any } | null } | null } | null }> } };
+
 export type SkillsSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SkillsSectionQuery = { allGraphCmsCv: { nodes: Array<{ name: string, skills: Array<{ id: string, name: string, level: number }> }> } };
+
+export type WhoAmIQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type WhoAmIQuery = { allGraphCmsCv: { nodes: Array<{ name: string, aboutMeSection: { longDescription: string } }> } };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 

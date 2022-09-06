@@ -12,6 +12,7 @@ fragment CV on CV {
       locale
       id
       description
+      longDescription
       location
       phone
       email

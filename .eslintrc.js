@@ -13,7 +13,7 @@ module.exports = {
     rules: {
         'prettier/prettier': 'error',
     },
-    ignorePatterns: ['node_modules/', 'public/', 'graphql-types.ts'],
+    ignorePatterns: ['node_modules/', 'public/', 'graphql-types.ts', '*.css.d.ts'],
     settings: {
         react: {
             version: 'detect',

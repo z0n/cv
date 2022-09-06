@@ -5,7 +5,11 @@ import { CvSection } from '../CvSection/CvSection'
 import { Experience, WorkExperience } from './Experience'
 import * as styles from './Experiences.module.css'
 
-export const ExperienceList: FC = () => {
+interface ExperienceListProps {
+    cvName: string
+}
+
+export const ExperienceList: FC<ExperienceListProps> = ({ cvName }) => {
     const queryData: ExperiencesSectionQuery = useStaticQuery(graphql`
         query ExperiencesSection {
             allGraphCmsCv {
@@ -25,7 +29,6 @@ export const ExperienceList: FC = () => {
         }
     `)
 
-    const cvName = process.env.GATSBY_CV_NAME as string
     const cvData = queryData.allGraphCmsCv.nodes.find(node => node.name === cvName)
 
     let experiences: WorkExperience[] = []
@@ -38,7 +41,7 @@ export const ExperienceList: FC = () => {
     }
 
     return (
-        <CvSection title='Experiences' sectionClassName={styles.experienceList}>
+        <CvSection title='Experience'>
             <div className={styles.experienceListItems}>
                 {experiences.map(experience => (
                     <Experience key={experience.id} experience={experience} />

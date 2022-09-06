@@ -6,6 +6,13 @@
 
 .contactItemIcon {
     display: flex;
+    color: var(--text-color-on-header-background);
+    filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0, 0.5));
+    transition-duration: 0.3s;
+}
+
+.contactItemIcon:hover {
+    transform: translateY(-0.3rem);
 }
 
 .contactItemRow {
@@ -13,5 +20,5 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.2rem;
+    gap: 0.5rem;
 }

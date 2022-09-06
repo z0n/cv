@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    background: #c7e7ff;
-    color: #001e2e;
-    border-radius: 2rem;
+    background: var(--secondary-color);
+    color: var(--text-color-on-dark);
 }
