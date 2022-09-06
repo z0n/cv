@@ -12,7 +12,8 @@
 }
 
 .background {
-    position: absolute;
+    /* https://github.com/gatsbyjs/gatsby/issues/34457 */
+    position: absolute !important;
     top: 0;
     left: 0;
     height: 100%;
