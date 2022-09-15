@@ -32,8 +32,8 @@
     "react-markdown": "^8.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.7.14",
-    "@types/react": "^18.0.14",
+    "@types/node": "^18.7.15",
+    "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
@@ -42,7 +42,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.5",
+    "eslint-plugin-react": "^7.31.8",
     "gatsby-plugin-dts-css-modules": "^3.0.0",
     "gatsby-plugin-graphql-codegen": "^3.1.1",
     "prettier": "^2.7.1",
