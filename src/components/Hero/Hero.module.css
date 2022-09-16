@@ -3,6 +3,7 @@
     flex: 1;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 0.5rem;
     padding: 3rem 0;
     position: relative;
@@ -26,17 +27,18 @@
 .section {
     display: flex;
     flex-direction: column;
-    max-width: fit-content;
-    align-self: center;
+    align-items: center;
 }
 
 .avatar {
     max-height: min(60vw, 8rem);
     max-width: min(60vw, 8rem);
     aspect-ratio: 1;
-    border-radius: 50%;
-    align-self: center;
+}
+
+.avatar img {
     border: var(--text-color-on-header-background) solid 0.1rem;
+    border-radius: 50%;
     box-shadow: 0 0 0.1rem rgb(0, 0, 0, 0.5);
 }
 
