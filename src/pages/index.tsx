@@ -17,7 +17,7 @@ const IndexPage: FC = () => {
             <main>
                 <WhoAmI cvName={cvName} />
                 <ExperienceList cvName={cvName} />
-                <TechStack />
+                <TechStack cvName={cvName} />
             </main>
         </Layout>
     )

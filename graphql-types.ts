@@ -704,6 +704,7 @@ export type GraphCms_Cv = Node & {
   aboutMeSection: GraphCms_AboutMeSection;
   experiences: Array<GraphCms_Experience>;
   skills: Array<GraphCms_Skill>;
+  technologies: Array<GraphCms_Technology>;
   publishedBy?: Maybe<GraphCms_User>;
   updatedBy?: Maybe<GraphCms_User>;
   createdBy?: Maybe<GraphCms_User>;
@@ -771,6 +772,15 @@ export type GraphCms_Skill = {
   id: Scalars['ID'];
   name: Scalars['String'];
   level: Scalars['Int'];
+};
+
+export type GraphCms_Technology = {
+  remoteTypeName: Scalars['String'];
+  stage: GraphCms_Stage;
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  url: Scalars['String'];
+  icon: GraphCms_Asset;
 };
 
 export type GraphCms_ScheduledRelease = Node & {
@@ -1155,6 +1165,7 @@ export type QueryGraphCmsCvArgs = {
   aboutMeSection?: InputMaybe<GraphCms_AboutMeSectionFilterInput>;
   experiences?: InputMaybe<GraphCms_ExperienceFilterListInput>;
   skills?: InputMaybe<GraphCms_SkillFilterListInput>;
+  technologies?: InputMaybe<GraphCms_TechnologyFilterListInput>;
   publishedBy?: InputMaybe<GraphCms_UserFilterInput>;
   updatedBy?: InputMaybe<GraphCms_UserFilterInput>;
   createdBy?: InputMaybe<GraphCms_UserFilterInput>;
@@ -3436,6 +3447,7 @@ export type GraphCms_CvFilterInput = {
   aboutMeSection?: InputMaybe<GraphCms_AboutMeSectionFilterInput>;
   experiences?: InputMaybe<GraphCms_ExperienceFilterListInput>;
   skills?: InputMaybe<GraphCms_SkillFilterListInput>;
+  technologies?: InputMaybe<GraphCms_TechnologyFilterListInput>;
   publishedBy?: InputMaybe<GraphCms_UserFilterInput>;
   updatedBy?: InputMaybe<GraphCms_UserFilterInput>;
   createdBy?: InputMaybe<GraphCms_UserFilterInput>;
@@ -3579,6 +3591,19 @@ export type GraphCms_SkillFilterInput = {
   id?: InputMaybe<IdQueryOperatorInput>;
   name?: InputMaybe<StringQueryOperatorInput>;
   level?: InputMaybe<IntQueryOperatorInput>;
+};
+
+export type GraphCms_TechnologyFilterListInput = {
+  elemMatch?: InputMaybe<GraphCms_TechnologyFilterInput>;
+};
+
+export type GraphCms_TechnologyFilterInput = {
+  remoteTypeName?: InputMaybe<StringQueryOperatorInput>;
+  stage?: InputMaybe<GraphCms_StageQueryOperatorInput>;
+  id?: InputMaybe<IdQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  icon?: InputMaybe<GraphCms_AssetFilterInput>;
 };
 
 export type GraphCms_AssetConnection = {
@@ -3848,6 +3873,30 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___skills___id'
   | 'backgroundImageCV___skills___name'
   | 'backgroundImageCV___skills___level'
+  | 'backgroundImageCV___technologies'
+  | 'backgroundImageCV___technologies___remoteTypeName'
+  | 'backgroundImageCV___technologies___stage'
+  | 'backgroundImageCV___technologies___id'
+  | 'backgroundImageCV___technologies___name'
+  | 'backgroundImageCV___technologies___url'
+  | 'backgroundImageCV___technologies___icon___remoteTypeName'
+  | 'backgroundImageCV___technologies___icon___remoteId'
+  | 'backgroundImageCV___technologies___icon___locale'
+  | 'backgroundImageCV___technologies___icon___stage'
+  | 'backgroundImageCV___technologies___icon___mimeType'
+  | 'backgroundImageCV___technologies___icon___size'
+  | 'backgroundImageCV___technologies___icon___width'
+  | 'backgroundImageCV___technologies___icon___height'
+  | 'backgroundImageCV___technologies___icon___fileName'
+  | 'backgroundImageCV___technologies___icon___handle'
+  | 'backgroundImageCV___technologies___icon___publishedAt'
+  | 'backgroundImageCV___technologies___icon___updatedAt'
+  | 'backgroundImageCV___technologies___icon___createdAt'
+  | 'backgroundImageCV___technologies___icon___backgroundImageCV'
+  | 'backgroundImageCV___technologies___icon___scheduledIn'
+  | 'backgroundImageCV___technologies___icon___url'
+  | 'backgroundImageCV___technologies___icon___id'
+  | 'backgroundImageCV___technologies___icon___children'
   | 'backgroundImageCV___publishedBy___remoteTypeName'
   | 'backgroundImageCV___publishedBy___remoteId'
   | 'backgroundImageCV___publishedBy___stage'
@@ -3983,6 +4032,7 @@ export type GraphCms_AssetFieldsEnum =
   | 'backgroundImageCV___backgroundImage___backgroundImageCV___name'
   | 'backgroundImageCV___backgroundImage___backgroundImageCV___experiences'
   | 'backgroundImageCV___backgroundImage___backgroundImageCV___skills'
+  | 'backgroundImageCV___backgroundImage___backgroundImageCV___technologies'
   | 'backgroundImageCV___backgroundImage___backgroundImageCV___scheduledIn'
   | 'backgroundImageCV___backgroundImage___backgroundImageCV___id'
   | 'backgroundImageCV___backgroundImage___backgroundImageCV___children'
@@ -5007,6 +5057,7 @@ export type GraphCms_CvFieldsEnum =
   | 'aboutMeSection___picture___backgroundImageCV___name'
   | 'aboutMeSection___picture___backgroundImageCV___experiences'
   | 'aboutMeSection___picture___backgroundImageCV___skills'
+  | 'aboutMeSection___picture___backgroundImageCV___technologies'
   | 'aboutMeSection___picture___backgroundImageCV___scheduledIn'
   | 'aboutMeSection___picture___backgroundImageCV___id'
   | 'aboutMeSection___picture___backgroundImageCV___children'
@@ -5093,6 +5144,142 @@ export type GraphCms_CvFieldsEnum =
   | 'skills___id'
   | 'skills___name'
   | 'skills___level'
+  | 'technologies'
+  | 'technologies___remoteTypeName'
+  | 'technologies___stage'
+  | 'technologies___id'
+  | 'technologies___name'
+  | 'technologies___url'
+  | 'technologies___icon___remoteTypeName'
+  | 'technologies___icon___remoteId'
+  | 'technologies___icon___locale'
+  | 'technologies___icon___stage'
+  | 'technologies___icon___mimeType'
+  | 'technologies___icon___size'
+  | 'technologies___icon___width'
+  | 'technologies___icon___height'
+  | 'technologies___icon___fileName'
+  | 'technologies___icon___handle'
+  | 'technologies___icon___publishedAt'
+  | 'technologies___icon___updatedAt'
+  | 'technologies___icon___createdAt'
+  | 'technologies___icon___publishedBy___remoteTypeName'
+  | 'technologies___icon___publishedBy___remoteId'
+  | 'technologies___icon___publishedBy___stage'
+  | 'technologies___icon___publishedBy___isActive'
+  | 'technologies___icon___publishedBy___picture'
+  | 'technologies___icon___publishedBy___name'
+  | 'technologies___icon___publishedBy___publishedAt'
+  | 'technologies___icon___publishedBy___updatedAt'
+  | 'technologies___icon___publishedBy___createdAt'
+  | 'technologies___icon___publishedBy___kind'
+  | 'technologies___icon___publishedBy___id'
+  | 'technologies___icon___publishedBy___children'
+  | 'technologies___icon___updatedBy___remoteTypeName'
+  | 'technologies___icon___updatedBy___remoteId'
+  | 'technologies___icon___updatedBy___stage'
+  | 'technologies___icon___updatedBy___isActive'
+  | 'technologies___icon___updatedBy___picture'
+  | 'technologies___icon___updatedBy___name'
+  | 'technologies___icon___updatedBy___publishedAt'
+  | 'technologies___icon___updatedBy___updatedAt'
+  | 'technologies___icon___updatedBy___createdAt'
+  | 'technologies___icon___updatedBy___kind'
+  | 'technologies___icon___updatedBy___id'
+  | 'technologies___icon___updatedBy___children'
+  | 'technologies___icon___createdBy___remoteTypeName'
+  | 'technologies___icon___createdBy___remoteId'
+  | 'technologies___icon___createdBy___stage'
+  | 'technologies___icon___createdBy___isActive'
+  | 'technologies___icon___createdBy___picture'
+  | 'technologies___icon___createdBy___name'
+  | 'technologies___icon___createdBy___publishedAt'
+  | 'technologies___icon___createdBy___updatedAt'
+  | 'technologies___icon___createdBy___createdAt'
+  | 'technologies___icon___createdBy___kind'
+  | 'technologies___icon___createdBy___id'
+  | 'technologies___icon___createdBy___children'
+  | 'technologies___icon___backgroundImageCV'
+  | 'technologies___icon___backgroundImageCV___remoteTypeName'
+  | 'technologies___icon___backgroundImageCV___remoteId'
+  | 'technologies___icon___backgroundImageCV___locale'
+  | 'technologies___icon___backgroundImageCV___stage'
+  | 'technologies___icon___backgroundImageCV___publishedAt'
+  | 'technologies___icon___backgroundImageCV___updatedAt'
+  | 'technologies___icon___backgroundImageCV___createdAt'
+  | 'technologies___icon___backgroundImageCV___name'
+  | 'technologies___icon___backgroundImageCV___experiences'
+  | 'technologies___icon___backgroundImageCV___skills'
+  | 'technologies___icon___backgroundImageCV___technologies'
+  | 'technologies___icon___backgroundImageCV___scheduledIn'
+  | 'technologies___icon___backgroundImageCV___id'
+  | 'technologies___icon___backgroundImageCV___children'
+  | 'technologies___icon___scheduledIn'
+  | 'technologies___icon___scheduledIn___remoteTypeName'
+  | 'technologies___icon___scheduledIn___remoteId'
+  | 'technologies___icon___scheduledIn___stage'
+  | 'technologies___icon___scheduledIn___rawPayload'
+  | 'technologies___icon___scheduledIn___errorMessage'
+  | 'technologies___icon___scheduledIn___description'
+  | 'technologies___icon___scheduledIn___publishedAt'
+  | 'technologies___icon___scheduledIn___updatedAt'
+  | 'technologies___icon___scheduledIn___createdAt'
+  | 'technologies___icon___scheduledIn___status'
+  | 'technologies___icon___scheduledIn___id'
+  | 'technologies___icon___scheduledIn___children'
+  | 'technologies___icon___url'
+  | 'technologies___icon___localFile___sourceInstanceName'
+  | 'technologies___icon___localFile___absolutePath'
+  | 'technologies___icon___localFile___relativePath'
+  | 'technologies___icon___localFile___extension'
+  | 'technologies___icon___localFile___size'
+  | 'technologies___icon___localFile___prettySize'
+  | 'technologies___icon___localFile___modifiedTime'
+  | 'technologies___icon___localFile___accessTime'
+  | 'technologies___icon___localFile___changeTime'
+  | 'technologies___icon___localFile___birthTime'
+  | 'technologies___icon___localFile___root'
+  | 'technologies___icon___localFile___dir'
+  | 'technologies___icon___localFile___base'
+  | 'technologies___icon___localFile___ext'
+  | 'technologies___icon___localFile___name'
+  | 'technologies___icon___localFile___relativeDirectory'
+  | 'technologies___icon___localFile___dev'
+  | 'technologies___icon___localFile___mode'
+  | 'technologies___icon___localFile___nlink'
+  | 'technologies___icon___localFile___uid'
+  | 'technologies___icon___localFile___gid'
+  | 'technologies___icon___localFile___rdev'
+  | 'technologies___icon___localFile___ino'
+  | 'technologies___icon___localFile___atimeMs'
+  | 'technologies___icon___localFile___mtimeMs'
+  | 'technologies___icon___localFile___ctimeMs'
+  | 'technologies___icon___localFile___atime'
+  | 'technologies___icon___localFile___mtime'
+  | 'technologies___icon___localFile___ctime'
+  | 'technologies___icon___localFile___birthtime'
+  | 'technologies___icon___localFile___birthtimeMs'
+  | 'technologies___icon___localFile___blksize'
+  | 'technologies___icon___localFile___blocks'
+  | 'technologies___icon___localFile___url'
+  | 'technologies___icon___localFile___childrenImageSharp'
+  | 'technologies___icon___localFile___id'
+  | 'technologies___icon___localFile___children'
+  | 'technologies___icon___id'
+  | 'technologies___icon___parent___id'
+  | 'technologies___icon___parent___children'
+  | 'technologies___icon___children'
+  | 'technologies___icon___children___id'
+  | 'technologies___icon___children___children'
+  | 'technologies___icon___internal___content'
+  | 'technologies___icon___internal___contentDigest'
+  | 'technologies___icon___internal___description'
+  | 'technologies___icon___internal___fieldOwners'
+  | 'technologies___icon___internal___ignoreType'
+  | 'technologies___icon___internal___mediaType'
+  | 'technologies___icon___internal___owner'
+  | 'technologies___icon___internal___type'
+  | 'technologies___icon___internal___contentFilePath'
   | 'publishedBy___remoteTypeName'
   | 'publishedBy___remoteId'
   | 'publishedBy___stage'
@@ -5371,6 +5558,12 @@ export type GraphCms_CvFieldsEnum =
   | 'backgroundImage___backgroundImageCV___skills___id'
   | 'backgroundImage___backgroundImageCV___skills___name'
   | 'backgroundImage___backgroundImageCV___skills___level'
+  | 'backgroundImage___backgroundImageCV___technologies'
+  | 'backgroundImage___backgroundImageCV___technologies___remoteTypeName'
+  | 'backgroundImage___backgroundImageCV___technologies___stage'
+  | 'backgroundImage___backgroundImageCV___technologies___id'
+  | 'backgroundImage___backgroundImageCV___technologies___name'
+  | 'backgroundImage___backgroundImageCV___technologies___url'
   | 'backgroundImage___backgroundImageCV___publishedBy___remoteTypeName'
   | 'backgroundImage___backgroundImageCV___publishedBy___remoteId'
   | 'backgroundImage___backgroundImageCV___publishedBy___stage'
@@ -7099,6 +7292,11 @@ export type SkillsSectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SkillsSectionQuery = { allGraphCmsCv: { nodes: Array<{ name: string, skills: Array<{ id: string, name: string, level: number }> }> } };
+
+export type TechStackQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TechStackQuery = { allGraphCmsCv: { nodes: Array<{ name: string, technologies: Array<{ id: string, name: string, url: string, icon: { url: string } }> }> } };
 
 export type WhoAmIQueryVariables = Exact<{ [key: string]: never; }>;
 

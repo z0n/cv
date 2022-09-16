@@ -38,5 +38,5 @@ body {
 a:link,
 a:visited {
     text-decoration: none;
-    color: var(--link-color);
+    text-shadow: 0 0 0.1rem rgb(0, 0, 0, 0.5);
 }
