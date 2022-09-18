@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import { MdLocationOn } from 'react-icons/md'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
 import { HeroQuery } from '../../../graphql-types'
-import { ContactItemRow } from '../ContactItems/ContactItemRow'
+import { ContactIconRow } from '../ContactIcon/ContactIconRow'
 import * as styles from './Hero.module.css'
-import { ContactIconWithLink } from '../ContactItems/ContactIconWithLink'
+import { ContactIconWithLink } from '../ContactIcon/ContactIconWithLink'
 import classNames from 'classnames'
+import { ContactItem } from '../ContactItem/ContactItem'
 
 interface HeroProps {
     cvName: string
@@ -63,17 +65,17 @@ export const Hero: FC<HeroProps> = ({ cvName }) => {
                 {description && <h2 className={styles.item}>{description}</h2>}
             </div>
             <div className={classNames(styles.section, styles.contactInformation)}>
-                {/* <div>
-                    {location && <ContactListItem icon={MdLocationOn} text={location} />}
-                    {phone && <ContactListItemWithLink icon={MdPhone} href={`tel:${phone}`} text={phone} />}
-                    {email && <ContactListItemWithLink icon={MdEmail} href={`mailto:${email}`} text={email} />}
-                </div> */}
-                <ContactItemRow>
+                <div>
+                    {location && <ContactItem icon={MdLocationOn} text={location} />}
+                    {/* {phone && <ContactListItemWithLink icon={MdPhone} href={`tel:${phone}`} text={phone} />}
+                    {email && <ContactListItemWithLink icon={MdEmail} href={`mailto:${email}`} text={email} />} */}
+                </div>
+                <ContactIconRow>
                     {linkedin && (
                         <ContactIconWithLink icon={FaLinkedin} href={`https://www.linkedin.com/in/${linkedin}`} />
                     )}
                     {github && <ContactIconWithLink icon={FaGithub} href={`https://github.com/${github}`} />}
-                </ContactItemRow>
+                </ContactIconRow>
             </div>
         </header>
     )

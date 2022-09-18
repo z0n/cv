@@ -1,0 +1,20 @@
+.contactIconRow {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.contactIcon {
+    display: flex;
+    color: var(--text-color-on-header-background);
+    filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0, 0.5));
+}
+
+a .contactIcon {
+    transition-duration: 0.3s;
+}
+
+a .contactIcon:hover {
+    transform: translateY(-0.3rem);
+}
