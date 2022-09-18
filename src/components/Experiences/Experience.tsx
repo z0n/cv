@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Card } from '../Card/Card'
+import { CvSectionContent } from '../CvSectionContent/CvSectionContent'
 import * as styles from './Experiences.module.css'
 
 export interface WorkExperience {
@@ -21,7 +21,7 @@ export const Experience: FC<ExperienceProps> = ({ experience }) => {
     const endDate = experience.endDate || 'now'
 
     return (
-        <Card>
+        <CvSectionContent>
             <h4>{experience.position}</h4>
             <div className={styles.subtitle}>
                 <span>{experience.company}</span>
@@ -35,6 +35,6 @@ export const Experience: FC<ExperienceProps> = ({ experience }) => {
                 </span>
             )}
             <span>{experience.technologies.join(' • ')}</span>
-        </Card>
+        </CvSectionContent>
     )
 }

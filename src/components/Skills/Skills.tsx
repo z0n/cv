@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { SkillsSectionQuery } from '../../../graphql-types'
-import { Card } from '../Card/Card'
+import { CvSectionContent } from '../CvSectionContent/CvSectionContent'
 import { CvSection } from '../CvSection/CvSection'
 import { SkillBar } from './SkillBar'
 import * as styles from './Skills.module.css'
@@ -32,14 +32,14 @@ export const Skills: FC<SkillsProps> = ({ cvName }) => {
 
     return (
         <CvSection title='Skills'>
-            <Card className={styles.skillsContainerItems}>
+            <CvSectionContent className={styles.skillsContainerItems}>
                 {skills.map(skill => (
-                    <Card key={skill.id} className={styles.skillContainer}>
+                    <CvSectionContent key={skill.id} className={styles.skillContainer}>
                         <SkillBar level={skill.level} />
                         {skill.name}
-                    </Card>
+                    </CvSectionContent>
                 ))}
-            </Card>
+            </CvSectionContent>
         </CvSection>
     )
 }

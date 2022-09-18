@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import React, { FC } from 'react'
 import { WhoAmIQuery } from '../../../graphql-types'
-import { Card } from '../Card/Card'
+import { CvSectionContent } from '../CvSectionContent/CvSectionContent'
 import { CvSection } from '../CvSection/CvSection'
 
 interface WhoAmIProps {
@@ -28,9 +28,9 @@ export const WhoAmI: FC<WhoAmIProps> = ({ cvName }) => {
 
     return (
         <CvSection title='Who am I'>
-            <Card>
+            <CvSectionContent>
                 <p>{longDescription}</p>
-            </Card>
+            </CvSectionContent>
         </CvSection>
     )
 }

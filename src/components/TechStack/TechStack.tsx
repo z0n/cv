@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import React, { FC } from 'react'
 import { TechStackQuery } from '../../../graphql-types'
-import { Card } from '../Card/Card'
+import { CvSectionContent } from '../CvSectionContent/CvSectionContent'
 import { CvSection } from '../CvSection/CvSection'
 import { Technology } from './Technology'
 import * as styles from './TechStack.module.css'
@@ -34,7 +34,7 @@ export const TechStack: FC<TechStackProps> = ({ cvName }) => {
 
     return (
         <CvSection title='What I like to work with'>
-            <Card className={styles.list}>
+            <CvSectionContent className={styles.list}>
                 {technologies.map(technology => (
                     <Technology
                         key={technology.id}
@@ -43,7 +43,7 @@ export const TechStack: FC<TechStackProps> = ({ cvName }) => {
                         iconUrl={technology.icon.url}
                     />
                 ))}
-            </Card>
+            </CvSectionContent>
         </CvSection>
     )
 }
