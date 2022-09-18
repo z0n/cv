@@ -1,12 +1,16 @@
 import React, { FC } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { SkillsSectionQuery } from '../../../graphql-types'
-import { Card } from '../Card/Card'
+import { CvSectionContent } from '../CvSectionContent/CvSectionContent'
 import { CvSection } from '../CvSection/CvSection'
 import { SkillBar } from './SkillBar'
 import * as styles from './Skills.module.css'
 
-export const Skills: FC = () => {
+interface SkillsProps {
+    cvName: string
+}
+
+export const Skills: FC<SkillsProps> = ({ cvName }) => {
     const queryData: SkillsSectionQuery = useStaticQuery(graphql`
         query SkillsSection {
             allGraphCmsCv {
@@ -22,21 +26,20 @@ export const Skills: FC = () => {
         }
     `)
 
-    const cvName = process.env.GATSBY_CV_NAME as string
     const cvData = queryData.allGraphCmsCv.nodes.find(node => node.name === cvName)
 
     const skills = cvData?.skills || []
 
     return (
-        <CvSection title='Skills' sectionClassName={styles.skillsContainer}>
-            <Card className={styles.skillsContainerItems}>
+        <CvSection title='Skills'>
+            <CvSectionContent className={styles.skillsContainerItems}>
                 {skills.map(skill => (
-                    <Card key={skill.id} className={styles.skillContainer}>
+                    <CvSectionContent key={skill.id} className={styles.skillContainer}>
                         <SkillBar level={skill.level} />
                         {skill.name}
-                    </Card>
+                    </CvSectionContent>
                 ))}
-            </Card>
+            </CvSectionContent>
         </CvSection>
     )
 }

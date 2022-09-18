@@ -1,27 +1,23 @@
 import React, { FC } from 'react'
-import { AboutMe } from '../components/AboutMe/AboutMe'
-import { HeaderBar } from '../components/HeaderBar/HeaderBar'
-import { Skills } from '../components/Skills/Skills'
-import * as styles from './index.module.css'
+import { Hero } from '../components/Hero/Hero'
 import { ExperienceList } from '../components/Experiences/ExperienceList'
-import { Background } from '../components/Background/Background'
 import { Layout } from '../components/Layout/Layout'
+import { TechStack } from '../components/TechStack/TechStack'
+import { WhoAmI } from '../components/WhoAmI/WhoAmI'
+
+const cvName = process.env.GATSBY_CV_NAME as string
 
 const IndexPage: FC = () => {
-    const cvName = process.env.GATSBY_CV_NAME as string
-
     return (
         <Layout>
-            <main>
+            <head>
                 <title>{cvName} - CV</title>
-                <Background>
-                    <HeaderBar />
-                    <div className={styles.content}>
-                        <AboutMe />
-                        <ExperienceList />
-                        <Skills />
-                    </div>
-                </Background>
+            </head>
+            <Hero cvName={cvName} />
+            <main>
+                <WhoAmI cvName={cvName} />
+                <ExperienceList cvName={cvName} />
+                <TechStack cvName={cvName} />
             </main>
         </Layout>
     )

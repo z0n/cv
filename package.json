@@ -29,6 +29,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-inlinesvg": "^3.0.1",
     "react-markdown": "^8.0.3"
   },
   "devDependencies": {
@@ -47,6 +48,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
+    "gatsby-plugin-dts-css-modules": "^3.0.0",
     "gatsby-plugin-graphql-codegen": "^3.1.1",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",

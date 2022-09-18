@@ -1,0 +1,7 @@
+.cvSectionContent {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: var(--secondary-color);
+    color: var(--text-color-on-dark);
+}

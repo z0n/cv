@@ -1,57 +1,43 @@
-@font-face {
-    font-family: "Kanit";
-    src: url("../../fonts/Kanit-Thin.ttf");
-    font-weight: 100;
-}
+@import '../../styles/typography.css';
+@import '../../styles/colors.css';
 
-@font-face {
-    font-family: "Kanit";
-    src: url("../../fonts/Kanit-ExtraLight.ttf");
-    font-weight: 200;
-}
-
-@font-face {
-    font-family: "Kanit";
-    src: url("../../fonts/Kanit-Light.ttf");
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: "Kanit";
-    src: url("../../fonts/Kanit-Regular.ttf");
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Kanit";
-    src: url("../../fonts/Kanit-Bold.ttf");
-    font-weight: 700;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: "Kanit", sans-serif;
-    font-weight: 300;
-    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 56rem;
+    margin: auto;
+    padding: 2rem;
+    background: #343a40;
 }
 
-a {
+.content {
+    box-shadow: 0 0 0.5rem rgb(0, 0, 0, 0.5);
+    border-radius: 0.8rem;
+    overflow: hidden;
+    isolation: isolate; /* Fix for "overflow: hidden" and "border-radius" with Safari -> https://stackoverflow.com/a/58283449 */
+}
+
+@media (max-width: 40rem) {
+    body {
+        padding: 0;
+    }
+    .content {
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+a:link,
+a:visited {
     text-decoration: none;
-    color: #000000;
-}
-
-h1 {
-    font-size: 1.8rem;
-    font-weight: 300;
-}
-
-h2 {
-    font-size: 1.2rem;
-    font-weight: 200;
-    margin: 0;
-}
-
-h3 {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin: 0;
+    text-shadow: 0 0 0.1rem rgb(0, 0, 0, 0.5);
 }

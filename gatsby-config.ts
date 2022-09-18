@@ -17,6 +17,7 @@ const config: GatsbyConfig = {
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         'gatsby-plugin-graphql-codegen',
+        'gatsby-plugin-dts-css-modules',
         {
             resolve: 'gatsby-source-graphcms',
             options: {

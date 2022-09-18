@@ -1,17 +1,15 @@
-import React, { FC } from 'react'
-import { Line } from '../Line/Line'
+import React, { FC, PropsWithChildren } from 'react'
+import * as styles from './CvSection.module.css'
 
-interface CvSectionProps {
+interface CvSectionProps extends PropsWithChildren {
     title: string
-    sectionClassName: string
-    children: React.ReactNode
 }
 
-export const CvSection: FC<CvSectionProps> = ({ title, sectionClassName, children }) => {
+export const CvSection: FC<CvSectionProps> = ({ title, children }) => {
     return (
-        <div className={sectionClassName}>
-            <Line text={title} />
+        <section>
+            <h3 className={styles.title}>{title}</h3>
             {children}
-        </div>
+        </section>
     )
 }
