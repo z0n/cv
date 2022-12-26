@@ -25,7 +25,7 @@
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-sharp": "^4.24.0",
     "gatsby-source-graphcms": "^2.8.0",
-    "gatsby-transformer-sharp": "^4.24.0",
+    "gatsby-transformer-sharp": "^4.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
